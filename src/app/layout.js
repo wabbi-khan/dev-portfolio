@@ -24,6 +24,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {/* add favcion logo.png */}
+
       <body className="antialiased" suppressHydrationWarning>
         <main>{children}</main>
       </body>

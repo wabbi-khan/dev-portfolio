@@ -2,7 +2,21 @@
 import React, { useState, useEffect } from "react";
 import { MdArrowOutward } from "react-icons/md";
 
-const reactProjects = [
+const projects = [
+  {
+    name: "Music Mandi",
+    desc: "Company website with modern UI and smooth animations.",
+    tags: ["Next.js", "React", "Sass"],
+    url: "https://musicmandi.com/",
+    year: "2026",
+  },
+  {
+    name: "Estima8",
+    desc: "AI-based software company website with modern UI and smooth animations.",
+    tags: ["Next.js", "React", "Sass"],
+    url: "https://estima8.ai/",
+    year: "2026",
+  },
   {
     name: "Xcl Technologies",
     desc: "Full-stack company website with modern UI and smooth animations.",
@@ -66,9 +80,6 @@ const reactProjects = [
     url: "https://time-clock-gules.vercel.app/",
     year: "2022",
   },
-];
-
-const htmlProjects = [
   {
     name: "Fab Care at Home",
     desc: "UK-based care services website with a professional, accessible layout.",
@@ -125,12 +136,6 @@ const htmlProjects = [
     url: "https://tailwind-wabbi-khan.vercel.app/",
     year: "2023",
   },
-];
-
-const CATEGORIES = [
-  "All",
-  "React & Next.js Apps",
-  "Responsive HTML & CSS Sites",
 ];
 
 const tagColors = {
@@ -201,27 +206,21 @@ const ProjectCard = ({ project }) => (
 );
 
 const ProjectsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [showAll, setShowAll] = useState(false);
+  const INITIAL_COUNT = 6;
 
-  // Re-activate scroll-reveal for newly rendered project cards after filtering
+  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_COUNT);
+  const hasMore = projects.length > INITIAL_COUNT;
+
   useEffect(() => {
+    if (!showAll) return;
     const timer = setTimeout(() => {
       document.querySelectorAll("#work .reveal").forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          el.classList.add("active");
-        }
+        el.classList.add("active");
       });
-    }, 50);
+    }, 100);
     return () => clearTimeout(timer);
-  }, [activeCategory]);
-
-  const displayProjects =
-    activeCategory === "All"
-      ? null
-      : activeCategory === "React & Next.js Apps"
-        ? reactProjects
-        : htmlProjects;
+  }, [showAll]);
 
   return (
     <section className="py-12 md:py-24 scroll-mt-24" id="work">
@@ -238,64 +237,20 @@ const ProjectsSection = () => {
         </p>
       </div>
 
-      {/* Filter buttons */}
-      <div className="flex flex-wrap gap-4 mb-12 items-center reveal">
-        <span className="font-display font-bold uppercase text-black tracking-widest text-xs">
-          Filter by:
-        </span>
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`border-2 border-black px-4 py-1 font-display font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-xs ${
-              activeCategory === cat
-                ? "bg-[#CCFF00]"
-                : "bg-white hover:bg-secondary-container"
-            }`}
-          >
-            {cat}
-          </button>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {visibleProjects.map((p, i) => (
+          <ProjectCard key={i} project={p} />
         ))}
       </div>
 
-      {/* "All" shows both categories */}
-      {activeCategory === "All" ? (
-        <>
-          {/* React / Next.js category */}
-          <div className="mb-16">
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="font-display text-2xl font-bold uppercase whitespace-nowrap">
-                React &amp; Next.js Apps
-              </h3>
-              <div className="h-0.5 w-full bg-black"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {reactProjects.map((p, i) => (
-                <ProjectCard key={i} project={p} />
-              ))}
-            </div>
-          </div>
-
-          {/* HTML/CSS category */}
-          <div>
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="font-display text-2xl font-bold uppercase whitespace-nowrap">
-                Responsive HTML &amp; CSS Sites
-              </h3>
-              <div className="h-0.5 w-full bg-black"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {htmlProjects.map((p, i) => (
-                <ProjectCard key={i} project={p} />
-              ))}
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {displayProjects.map((p, i) => (
-            <ProjectCard key={i} project={p} />
-          ))}
+      {hasMore && !showAll && (
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => setShowAll(true)}
+            className="border-2 border-black px-8 py-3 font-display font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-sm bg-white hover:bg-[#CCFF00]"
+          >
+            Show More
+          </button>
         </div>
       )}
     </section>

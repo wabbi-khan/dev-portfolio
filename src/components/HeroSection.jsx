@@ -4,7 +4,7 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <section
-      className="grid grid-cols-1 md:grid-cols-12 gap-6 py-12 md:py-24 items-center"
+      className="grid grid-cols-1 md:grid-cols-12 gap-6 py-12 md:pt-24 items-center"
       id="home"
     >
       <div className="md:col-span-7 flex flex-col gap-6 reveal">
@@ -16,15 +16,50 @@ const HeroSection = () => {
           <span className="bg-[#CCFF00] px-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
             DEVELOPER
           </span>{" "}
-          & WEB BUILDER
+          &amp; WEB ARCHITECT
         </h1>
+
+        {/* Client Catching Paragraph */}
         <p className="text-lg md:text-xl max-w-full text-on-surface-variant font-medium leading-relaxed">
-          Hi, I&apos;m <strong>Abdul Wahab Khan</strong> — a Front-End Developer with 3+ years of
-          experience building fast, user-focused, and visually striking websites.
-          I specialize in React.js &amp; Next.js, bridging great design with
-          clean, scalable code.
+          Hi, I&apos;m <strong>Abdul Wahab Khan</strong> — a Front-End Developer
+          with 4+ years of experience engineering high-performance web
+          platforms. I turn complex requirements into smooth digital products
+          from
+          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block">
+            Enterprise ERP Systems
+          </span>
+          and{" "}
+          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block">
+            AI Chatbots
+          </span>
+          to real-time data{" "}
+          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block">
+            Dashboards
+          </span>
+          and scalable web applications using React.js &amp; Next.js.
         </p>
-        <div className="flex flex-wrap gap-4 mt-4">
+
+        {/* Quick Capabilities Highlights */}
+        <div className="grid grid-cols-2 gap-3 text-sm font-mono font-bold uppercase">
+          <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> Custom ERP
+            Platforms
+          </div>
+          <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> AI Chatbot
+            Integrations
+          </div>
+          <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> Real-Time
+            Dashboards
+          </div>
+          <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> UI/UX
+            Animations
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-4 mt-2">
           <Link href="#hireme">
             <button className="bg-[#CCFF00] text-black px-10 py-4 border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all font-display font-bold uppercase text-xl">
               HIRE ME
@@ -36,6 +71,7 @@ const HeroSection = () => {
             </button>
           </Link>
         </div>
+
         {/* Location badge */}
         <div className="flex items-center gap-2 mt-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse inline-block"></span>
@@ -78,10 +114,6 @@ const HeroSection = () => {
                   0%, 100% { opacity: 1; }
                   50% { opacity: 0; }
                 }
-                @keyframes type-in {
-                  from { stroke-dashoffset: 300; }
-                  to { stroke-dashoffset: 0; }
-                }
                 .animate-float { animation: float 6s ease-in-out infinite; }
                 .animate-spin-slow { animation: spin-slow 12s linear infinite; }
                 .animate-cursor { animation: blink-cursor 1s step-end infinite; }
@@ -113,41 +145,110 @@ const HeroSection = () => {
               {/* Screen inner */}
               <rect fill="black" height="90" width="120" x="140" y="145"></rect>
               {/* Code lines */}
-              <line stroke="#CCFF00" strokeWidth="3" x1="155" x2="200" y1="165" y2="165" />
-              <line stroke="#50D9FE" strokeWidth="3" x1="155" x2="220" y1="178" y2="178" />
-              <line stroke="white" strokeWidth="3" x1="155" x2="190" y1="191" y2="191" />
-              <line stroke="#CCFF00" strokeWidth="3" x1="155" x2="205" y1="204" y2="204" />
-              <line stroke="#50D9FE" strokeWidth="3" x1="155" x2="215" y1="217" y2="217" />
+              <line
+                stroke="#CCFF00"
+                strokeWidth="3"
+                x1="155"
+                x2="200"
+                y1="165"
+                y2="165"
+              />
+              <line
+                stroke="#50D9FE"
+                strokeWidth="3"
+                x1="155"
+                x2="220"
+                y1="178"
+                y2="178"
+              />
+              <line
+                stroke="white"
+                strokeWidth="3"
+                x1="155"
+                x2="190"
+                y1="191"
+                y2="191"
+              />
+              <line
+                stroke="#CCFF00"
+                strokeWidth="3"
+                x1="155"
+                x2="205"
+                y1="204"
+                y2="204"
+              />
+              <line
+                stroke="#50D9FE"
+                strokeWidth="3"
+                x1="155"
+                x2="215"
+                y1="217"
+                y2="217"
+              />
               {/* Blinking cursor */}
-              <rect className="animate-cursor" fill="#CCFF00" height="12" width="6" x="219" y="207" />
+              <rect
+                className="animate-cursor"
+                fill="#CCFF00"
+                height="12"
+                width="6"
+                x="219"
+                y="207"
+              />
             </g>
 
             {/* React atom-like orbit */}
             <g transform="translate(320, 80)">
               <circle
-                cx="0" cy="0" fill="none" opacity="0.5" r="35"
-                stroke="#CCFF00" strokeWidth="2"
+                cx="0"
+                cy="0"
+                fill="none"
+                opacity="0.5"
+                r="35"
+                stroke="#CCFF00"
+                strokeWidth="2"
               ></circle>
               <ellipse
-                cx="0" cy="0" fill="none" rx="35" ry="10"
-                stroke="black" strokeWidth="1"
+                cx="0"
+                cy="0"
+                fill="none"
+                rx="35"
+                ry="10"
+                stroke="black"
+                strokeWidth="1"
               ></ellipse>
-              <circle cx="0" cy="-35" r="8" fill="#CCFF00" stroke="black" strokeWidth="2" />
+              <circle
+                cx="0"
+                cy="-35"
+                r="8"
+                fill="#CCFF00"
+                stroke="black"
+                strokeWidth="2"
+              />
             </g>
 
             {/* Decorative shapes */}
             <circle
               className="shape-brutal animate-pulse"
-              cx="80" cy="80" fill="#CCFF00" r="20"
+              cx="80"
+              cy="80"
+              fill="#CCFF00"
+              r="20"
             ></circle>
             <rect
               className="shape-brutal"
-              fill="black" height="40" width="40" x="40" y="300"
+              fill="black"
+              height="40"
+              width="40"
+              x="40"
+              y="300"
             ></rect>
             <line
               className="shape-brutal"
               strokeDasharray="10 5"
-              x1="320" x2="380" y1="320" y2="380"
+              x1="320"
+              x2="380"
+              y1="320"
+              y2="380"
             ></line>
           </svg>
 

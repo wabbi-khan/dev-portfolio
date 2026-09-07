@@ -13,7 +13,15 @@ const skills = [
     category: "Frameworks & Libraries",
     icon: <MdOutlineTerminal size={32} />,
     color: "bg-[#CCFF00]",
-    items: ["React.js", "Next.js", "Tailwind CSS", "Bootstrap", "Sass"],
+    items: [
+      "React.js",
+      "Next.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Sass",
+      "shadcn",
+      "material ui",
+    ],
   },
   {
     category: "Core Web Tech",
@@ -25,7 +33,7 @@ const skills = [
     category: "Design Tools",
     icon: <MdOutlineDesignServices size={32} />,
     color: "bg-white",
-    items: ["Adobe Photoshop", "Adobe XD"],
+    items: ["Adobe Photoshop", "Adobe XD", "Figma"],
   },
 ];
 
@@ -57,16 +65,25 @@ const AboutSection = () => {
               THE BUILD
             </span>
           </h2>
+
           <p className="text-lg md:text-xl max-w-full border-l-4 border-primary-container pl-6 py-2 text-on-surface-variant font-medium leading-relaxed mb-6">
-            I am a Front-End Developer with over 3 years of hands-on experience
-            building fast, user-focused, and visually striking websites.
+            I am a Front-End Developer with over 4+ years of hands-on experience
+            building fast, user-focused, and visually striking web platforms.
             Specializing in modern JavaScript frameworks like React.js and
-            Next.js, I bridge the gap between design and clean, scalable code.
+            Next.js, I bridge the gap between high-impact design and clean,
+            scalable code.
           </p>
+
+          <p className="text-base text-on-surface-variant font-medium border-l-4 border-black pl-6 py-2 leading-relaxed mb-6">
+            My expertise extends beyond standard interfaces to architecting
+            complex, data-driven ERP systems and building custom AI-powered
+            chatbot solutions that streamline operations.
+          </p>
+
           <p className="text-base text-on-surface-variant font-medium border-l-4 border-black pl-6 py-2 leading-relaxed">
             I love bringing static layouts to life—currently deep-diving into
             advanced web animation libraries to make digital experiences even
-            more interactive and engaging.
+            more interactive, responsive, and engaging[cite: 1].
           </p>
         </div>
         <div className="md:col-span-5 relative">
@@ -284,9 +301,9 @@ const AboutSection = () => {
                     ONLINE CARE — June 2023 – Aug 2023
                   </p>
                 </div>
-                <span className="hidden md:block text-4xl">
+                {/* <span className="hidden md:block text-4xl">
                   <MdOutlineTrendingUp />
-                </span>
+                </span> */}
               </div>
               <ul className="text-base text-on-surface-variant font-medium space-y-1 list-disc list-inside">
                 <li>
@@ -316,9 +333,9 @@ const AboutSection = () => {
                     XCL TECHNOLOGIES — Sept 2021 – Aug 2023
                   </p>
                 </div>
-                <span className="hidden md:block text-4xl">
+                {/* <span className="hidden md:block text-4xl">
                   <MdOutlineSchool />
-                </span>
+                </span> */}
               </div>
               <ul className="text-base text-on-surface-variant font-medium space-y-1 list-disc list-inside">
                 <li>

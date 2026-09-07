@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,8 +19,8 @@ const Navbar = () => {
         scrolled ? "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" : ""
       }`}
     >
-      <div className="text-xl font-black text-black tracking-tighter font-display uppercase">
-        AW<span className="text-[#CCFF00]">/</span>KHAN
+      <div className="">
+        <Image src="/logo.png" alt="Logo" width={50} height={50} />
       </div>
       <div className="hidden md:flex gap-8 items-center">
         <Link
@@ -65,11 +66,31 @@ const Navbar = () => {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center gap-4 py-6">
-          <Link href="#work" onClick={() => setMenuOpen(false)} className="font-display font-bold uppercase text-black">Work</Link>
-          <Link href="#about" onClick={() => setMenuOpen(false)} className="font-display font-bold uppercase text-black">About</Link>
-          <Link href="#contact" onClick={() => setMenuOpen(false)} className="font-display font-bold uppercase text-black">Contact</Link>
+          <Link
+            href="#work"
+            onClick={() => setMenuOpen(false)}
+            className="font-display font-bold uppercase text-black"
+          >
+            Work
+          </Link>
+          <Link
+            href="#about"
+            onClick={() => setMenuOpen(false)}
+            className="font-display font-bold uppercase text-black"
+          >
+            About
+          </Link>
+          <Link
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="font-display font-bold uppercase text-black"
+          >
+            Contact
+          </Link>
           <Link href="#hireme" onClick={() => setMenuOpen(false)}>
-            <button className="bg-[#CCFF00] text-black px-6 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-display font-bold uppercase">Hire Me</button>
+            <button className="bg-[#CCFF00] text-black px-6 py-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-display font-bold uppercase">
+              Hire Me
+            </button>
           </Link>
         </div>
       )}
