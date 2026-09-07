@@ -3,8 +3,8 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 
 const ContactSection = () => {
   return (
-    <section className="py-12 md:py-24 mb-12 scroll-mt-24 reveal" id="contact">
-      <div className="bg-black text-white p-8 md:p-16 border-2 border-black shadow-[16px_16px_0px_0px_rgba(204,255,0,1)] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="py-12 md:py-24 mb-12 scroll-mt-24 reveal" id="hireme">
+      <div className="bg-black text-white p-4 md:p-16 border-2 border-black shadow-[16px_16px_0px_0px_rgba(204,255,0,1)] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#CCFF00] uppercase mb-4 leading-tight">
             Ready to build something iconic?
@@ -25,7 +25,7 @@ const ContactSection = () => {
           </div>
         </div>
         <div className="flex flex-col gap-6">
-          <div className="bg-white border-2 border-white p-1 flex">
+          <div className="relative bg-white border-2 border-white p-1 flex">
             <input
               className="flex-grow bg-black text-white p-4 border-none focus:ring-0 font-body text-base outline-none"
               placeholder="your@email.com"
@@ -33,7 +33,7 @@ const ContactSection = () => {
             />
             <a
               href="mailto:kwahab789@gmail.com"
-              className="bg-[#CCFF00] text-black px-6 py-2 border-2 border-black font-display font-bold uppercase hover:bg-white transition-colors text-sm flex items-center"
+              className="absolute right-2 top-2 bottom-2 bg-[#CCFF00] text-black px-6 py-2 border-2 border-black font-display font-bold uppercase hover:bg-white transition-colors text-sm flex items-center"
             >
               Let&apos;s Chat
             </a>

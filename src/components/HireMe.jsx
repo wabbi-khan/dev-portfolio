@@ -5,12 +5,12 @@ import { LuSendHorizontal } from "react-icons/lu";
 
 const HireMe = () => {
   return (
-    <section className="scroll-mt-24" id="hireme">
+    <section className="scroll-mt-24" id="contact">
       <div className="flex flex-col gap-sm">
         <span className="bg-primary-container text-black font-label-bold px-3 py-1 self-start border-2 border-black uppercase text-xs">
           OPEN FOR PROJECTS
         </span>
-        <h1 className="font-headline-xl text-black uppercase">
+        <h1 className="md:font-headline-xl font-headline-lg text-black uppercase">
           LET&apos;S BUILD SOMETHING ICONIC
         </h1>
         <p className="font-body-lg max-w-2xl text-on-surface-variant">
@@ -144,7 +144,7 @@ const HireMe = () => {
                 kwahab789@gmail.com
               </p>
             </div>
-            <div className="absolute bottom-4 right-4 bg-primary-container text-black border-2 border-black px-4 py-2 font-label-bold uppercase neo-shadow text-xs">
+            <div className="absolute bottom-0 right-2 bg-primary-container text-black border-2 border-black px-4 py-2 font-label-bold uppercase neo-shadow text-xs">
               REMOTE / HYBRID
             </div>
           </div>

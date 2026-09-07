@@ -24,7 +24,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* add favcion logo.png */}
+      {/* add favcion logo.png  */}
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
       <body className="antialiased" suppressHydrationWarning>
         <main>{children}</main>
