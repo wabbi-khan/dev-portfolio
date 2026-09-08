@@ -25,15 +25,15 @@ const HeroSection = () => {
           with 4+ years of experience engineering high-performance web
           platforms. I turn complex requirements into smooth digital products
           from
-          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block">
+          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">
             Enterprise ERP Systems
           </span>
           and{" "}
-          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block">
+          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">
             AI Chatbots
           </span>
           to real-time data{" "}
-          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block">
+          <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">
             Dashboards
           </span>
           and scalable web applications using React.js &amp; Next.js.

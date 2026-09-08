@@ -232,7 +232,7 @@ const ProjectsSection = () => {
           </span>
         </h2>
         <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl font-medium">
-          A collection of high performance digital solutions — from immersive
+          A collection of high performance digital solutions from immersive
           React applications to polished, responsive HTML sites.
         </p>
       </div>
