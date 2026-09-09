@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Typewriter from "typewriter-effect";
 
 const HeroSection = () => {
   return (
@@ -7,10 +8,25 @@ const HeroSection = () => {
       className="grid grid-cols-1 md:grid-cols-12 gap-6 py-12 md:pt-24 items-center"
       id="home"
     >
-      <div className="md:col-span-7 flex flex-col gap-6 reveal">
+      <div className="md:col-span-7 flex flex-col gap-4 reveal">
         <div className="inline-block bg-secondary-container px-4 py-1 border-2 border-black w-fit font-bold uppercase text-xs">
           Available for new projects
         </div>
+        <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1 w-fit">
+          <Typewriter
+            options={{
+              strings: [
+                "Custom ERP and Software Systems",
+                "AI Chatbot Integrations",
+                "Real-Time Dashboards",
+                "UI/UX Animations",
+                "Web Applications",
+              ],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </span>
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-black uppercase tracking-tighter">
           FRONT-END{" "}
           <span className="bg-[#CCFF00] px-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
@@ -26,7 +42,7 @@ const HeroSection = () => {
           platforms. I turn complex requirements into smooth digital products
           from
           <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">
-            Enterprise ERP Systems
+            Custom ERP and Software Systems
           </span>
           and{" "}
           <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">

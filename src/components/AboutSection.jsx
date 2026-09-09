@@ -83,7 +83,7 @@ const AboutSection = () => {
           <p className="text-base text-on-surface-variant font-medium border-l-4 border-black pl-6 py-2 leading-relaxed">
             I love bringing static layouts to life—currently deep-diving into
             advanced web animation libraries to make digital experiences even
-            more interactive, responsive, and engaging[cite: 1].
+            more interactive, responsive, and engaging.
           </p>
         </div>
         <div className="md:col-span-5 relative">
