@@ -12,21 +12,7 @@ const HeroSection = () => {
         <div className="inline-block bg-secondary-container px-4 py-1 border-2 border-black w-fit font-bold uppercase text-xs">
           Available for new projects
         </div>
-        <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1 w-fit">
-          <Typewriter
-            options={{
-              strings: [
-                "Custom ERP and Software Systems",
-                "AI Chatbot Integrations",
-                "Real-Time Dashboards",
-                "UI/UX Animations",
-                "Web Applications",
-              ],
-              autoStart: true,
-              loop: true,
-            }}
-          />
-        </span>
+
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-black uppercase tracking-tighter">
           FRONT-END{" "}
           <span className="bg-[#CCFF00] px-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
@@ -98,6 +84,22 @@ const HeroSection = () => {
       </div>
 
       <div className="md:col-span-5 relative group cursor-crosshair reveal transition-delay-200">
+        <div className="absolute -top-10  bg-black text-[#CCFF00] font-bold px-1.5 py-0.5  inline-block w-fit">
+          <Typewriter
+            options={{
+              strings: [
+                "Custom ERP and Software Systems",
+                "AI Chatbot Integrations",
+                "Real-Time Dashboards",
+                "UI/UX Animations",
+                "Web Applications",
+              ],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </div>
+
         <div className="bg-[#CCFF00] border-2 border-black absolute inset-0 translate-x-4 translate-y-4 animate-drift"></div>
         <div className="relative z-10 w-full aspect-square border-2 border-black bg-white flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
           {/* Brutalist Grid Background */}
