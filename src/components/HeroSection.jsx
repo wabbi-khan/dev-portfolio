@@ -85,19 +85,23 @@ const HeroSection = () => {
 
       <div className="md:col-span-5 relative group cursor-crosshair reveal transition-delay-200">
         <div className="absolute -top-10  bg-black text-[#CCFF00] font-bold px-1.5 py-0.5  inline-block w-fit">
-          <Typewriter
-            options={{
-              strings: [
-                "Custom ERP and Software Systems",
-                "AI Chatbot Integrations",
-                "Real-Time Dashboards",
-                "UI/UX Animations",
-                "Web Applications",
-              ],
-              autoStart: true,
-              loop: true,
-            }}
-          />
+          <code className="flex">
+            &lt;
+            <Typewriter
+              options={{
+                strings: [
+                  "Custom ERP and Software Systems",
+                  "AI Chatbot Integrations",
+                  "Real-Time Dashboards",
+                  "UI/UX Animations",
+                  "Web Applications",
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+            /&gt;
+          </code>
         </div>
 
         <div className="bg-[#CCFF00] border-2 border-black absolute inset-0 translate-x-4 translate-y-4 animate-drift"></div>
