@@ -83,7 +83,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="md:col-span-5 relative group cursor-crosshair reveal transition-delay-200">
+      <div className="md:col-span-5 relative group cursor-crosshair reveal transition-delay-200 sm:mt-0 mt-10">
         <div className="absolute -top-10  bg-black text-[#CCFF00] font-bold px-1.5 py-0.5  inline-block w-fit">
           <code className="flex">
             &lt;

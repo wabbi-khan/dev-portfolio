@@ -56,10 +56,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-surface-bright font-body text-on-surface">
+    <div className="bg-surface-bright font-body text-on-surface ">
       <Navbar />
 
-      <main className="mt-24 max-w-[1200px] mx-auto px-6">
+      <main className="mt-24 max-w-[1200px] mx-auto px-6 overflow-x-hidden">
         <HeroSection />
 
         <StatsSection />

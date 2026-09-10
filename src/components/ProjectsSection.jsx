@@ -4,6 +4,13 @@ import { MdArrowOutward } from "react-icons/md";
 
 const projects = [
   {
+    name: "Nala Bot",
+    desc: "Company website with modern UI and smooth animations.",
+    tags: ["Next.js", "React", "tailwind"],
+    url: "https://www.nalabot.com/",
+    year: "2026",
+  },
+  {
     name: "Music Mandi",
     desc: "Company website with modern UI and smooth animations.",
     tags: ["Next.js", "React", "Sass"],
