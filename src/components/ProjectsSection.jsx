@@ -4,6 +4,20 @@ import { MdArrowOutward } from "react-icons/md";
 
 const projects = [
   {
+    name: "Life drop",
+    desc: "Blood Donor web application with modern UI and smooth animations.",
+    tags: ["Next.js", "React", "tailwind"],
+    url: "https://blood-donor-one.vercel.app/",
+    year: "2026",
+  },
+  {
+    name: "Dating Proposal fun",
+    desc: "Dating web application with modern UI and smooth animations.",
+    tags: ["Next.js", "React", "tailwind"],
+    url: "https://date-proposal-omega.vercel.app/",
+    year: "2026",
+  },
+  {
     name: "Nala Bot",
     desc: "Company website with modern UI and smooth animations.",
     tags: ["Next.js", "React", "tailwind"],
