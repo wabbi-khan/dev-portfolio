@@ -3,14 +3,14 @@ import "./globals.css";
 export const metadata = {
   title: "Abdul Wahab Khan | Front-End Developer",
   description:
-    "Abdul Wahab Khan — Front-End Developer with 3+ years of experience in React.js, Next.js, and modern web technologies. Based in Hyderabad, Pakistan.",
+    "Abdul Wahab Khan — Front-End Developer with 3+ years of experience in React.js, Next.js, and modern web technologies. Based in Pakistan.",
   keywords: [
     "Abdul Wahab Khan",
     "Front-End Developer",
     "React Developer",
     "Next.js Developer",
     "Web Developer Pakistan",
-    "Hyderabad Pakistan",
+    "Pakistan",
   ],
   authors: [{ name: "Abdul Wahab Khan" }],
   openGraph: {

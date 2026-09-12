@@ -137,7 +137,7 @@ const HireMe = () => {
             />
             <div className="relative z-10 flex flex-col gap-4">
               <p className="font-display font-bold uppercase text-[#CCFF00] text-lg">
-                Hyderabad, Pakistan
+                Pakistan
               </p>
               <p className="font-mono text-white/70 text-sm">+92-331-3507810</p>
               <p className="font-mono text-white/70 text-sm">

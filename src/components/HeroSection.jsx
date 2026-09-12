@@ -23,7 +23,7 @@ const HeroSection = () => {
 
         {/* Client Catching Paragraph */}
         <p className="text-lg md:text-xl max-w-full text-on-surface-variant font-medium leading-relaxed">
-          Hi, I&apos;m <strong>Abdul Wahab Khan</strong> — a Front-End Developer
+          Hi, I&apos;m <strong>Abdul Wahab Khan</strong> a Frontend Developer
           with 4+ years of experience engineering high-performance web
           platforms. I turn complex requirements into smooth digital products
           from
@@ -78,7 +78,7 @@ const HeroSection = () => {
         <div className="flex items-center gap-2 mt-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse inline-block"></span>
           <span className="font-mono text-xs text-zinc-500 uppercase tracking-widest">
-            Based in Hyderabad, Pakistan
+            Based in Pakistan
           </span>
         </div>
       </div>

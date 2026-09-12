@@ -14,7 +14,7 @@ const ContactSection = () => {
             vision and bring it to life with modern React / Next.js tech.
           </p>
           <div className="flex flex-col gap-2 font-mono text-sm text-white/60">
-            <span>📍 Hyderabad, Pakistan</span>
+            <span>📍 Pakistan</span>
             <span>📞 +92-331-3507810</span>
             <a
               href="mailto:kwahab789@gmail.com"
