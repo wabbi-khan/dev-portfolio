@@ -19,7 +19,7 @@ const Navbar = () => {
         scrolled ? "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]" : ""
       }`}
     >
-      <div className="">
+      <div>
         <Image src="/logo.png" alt="Logo" width={50} height={50} />
       </div>
       <div className="hidden md:flex gap-8 items-center">

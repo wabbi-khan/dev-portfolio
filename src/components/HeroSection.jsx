@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Typewriter from "typewriter-effect";
+import { Mascot } from "page-mascot";
 
 const HeroSection = () => {
   return (
@@ -8,9 +9,15 @@ const HeroSection = () => {
       className="grid grid-cols-1 md:grid-cols-12 gap-6 py-12 md:pt-24 items-center"
       id="home"
     >
-      <div className="md:col-span-7 flex flex-col gap-4 reveal">
-        <div className="inline-block bg-secondary-container px-4 py-1 border-2 border-black w-fit font-bold uppercase text-xs">
-          Available for new projects
+      <div className="md:col-span-7 flex flex-col reveal">
+        <div className="flex items-center">
+          <div className="inline-block h-fit bg-secondary-container px-4 py-1 border-2 border-black w-fit font-bold uppercase text-xs">
+            Available for new projects
+          </div>
+          <Mascot
+            directions="/mascots/beard-directions.webp"
+            reactions="/mascots/beard-reactions.webp"
+          />
         </div>
 
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-black uppercase tracking-tighter">
