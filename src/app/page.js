@@ -59,7 +59,7 @@ export default function Home() {
     <div className="bg-surface-bright font-body text-on-surface ">
       <Navbar />
 
-      <main className="mt-24 max-w-[1200px] mx-auto px-6 overflow-x-hidden">
+      <main className="mt-24 max-w-[1400px] mx-auto px-6 overflow-x-hidden">
         <HeroSection />
 
         <StatsSection />
