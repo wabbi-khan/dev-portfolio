@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import StatsSection from "@/components/StatsSection";
@@ -57,6 +58,7 @@ export default function Home() {
 
   return (
     <div className="bg-surface-bright font-body text-on-surface ">
+      <Toaster position="top-right" />
       <Navbar />
 
       <main className="mt-24 max-w-[1400px] mx-auto px-6 overflow-x-hidden">

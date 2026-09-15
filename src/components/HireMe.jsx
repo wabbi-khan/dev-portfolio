@@ -1,9 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMailOutline } from "react-icons/io5";
 import { MdInsertLink, MdOutlineTerminal } from "react-icons/md";
 import { LuSendHorizontal } from "react-icons/lu";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { toast } from "sonner";
 
 const HireMe = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    projectType: "",
+    projectDescription: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.name.trim() || !formData.email.trim()) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Add document to Firestore
+      await addDoc(collection(db, "hireInquiries"), {
+        name: formData.name,
+        email: formData.email,
+        projectType: formData.projectType,
+        projectDescription: formData.projectDescription,
+        timestamp: serverTimestamp(),
+      });
+
+      // Show success toast
+      toast.success(
+        "Your message has been sent successfully! I'll get back to you soon.",
+      );
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        projectType: "",
+        projectDescription: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="scroll-mt-24" id="contact">
       <div className="flex flex-col gap-sm">
@@ -24,20 +84,16 @@ const HireMe = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
         {/* Contact Form Area */}
         <div className="lg:col-span-8 bg-white border-2 border-black neo-shadow-lg p-lg md:p-xl">
-          <form
-            className="flex flex-col gap-lg"
-            onSubmit={(e) => {
-              e.preventDefault();
-              window.location.href = "mailto:kwahab789@gmail.com";
-            }}
-          >
+          <form className="flex flex-col gap-lg" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
               <div className="flex flex-col gap-xs">
                 <label className="font-label-bold uppercase">Name</label>
                 <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="bg-white border-2 border-black p-md font-body-md focus:ring-0 focus:border-primary-container focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] outline-none transition-all"
                   placeholder="John Doe"
-                  type="text"
                   required
                 />
               </div>
@@ -46,6 +102,9 @@ const HireMe = () => {
                   Email Address
                 </label>
                 <input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="bg-white border-2 border-black p-md font-body-md focus:ring-0 focus:border-primary-container focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] outline-none transition-all"
                   placeholder="john@example.com"
                   type="email"
@@ -55,12 +114,24 @@ const HireMe = () => {
             </div>
             <div className="flex flex-col gap-xs">
               <label className="font-label-bold uppercase">Project Type</label>
-              <select className="bg-white border-2 border-black p-md font-body-md focus:ring-0 focus:border-primary-container focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] outline-none transition-all appearance-none">
-                <option>WEB DEVELOPMENT (REACT / NEXT.JS)</option>
-                <option>RESPONSIVE HTML & CSS SITE</option>
-                <option>UI/UX IMPLEMENTATION</option>
-                <option>FULL-STACK PRODUCT</option>
-                <option>WORDPRESS SITE</option>
+              <select
+                name="projectType"
+                value={formData.projectType}
+                onChange={handleChange}
+                className="bg-white border-2 border-black p-md font-body-md focus:ring-0 focus:border-primary-container focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] outline-none transition-all appearance-none"
+              >
+                <option value="">Select Project Type</option>
+                <option value="WEB DEVELOPMENT (REACT / NEXT.JS)">
+                  WEB DEVELOPMENT (REACT / NEXT.JS)
+                </option>
+                <option value="RESPONSIVE HTML & CSS SITE">
+                  RESPONSIVE HTML & CSS SITE
+                </option>
+                <option value="UI/UX IMPLEMENTATION">
+                  UI/UX IMPLEMENTATION
+                </option>
+                <option value="FULL-STACK PRODUCT">FULL-STACK PRODUCT</option>
+                <option value="WORDPRESS SITE">WORDPRESS SITE</option>
               </select>
             </div>
             <div className="flex flex-col gap-xs">
@@ -68,16 +139,20 @@ const HireMe = () => {
                 Tell me about your project
               </label>
               <textarea
+                name="projectDescription"
+                value={formData.projectDescription}
+                onChange={handleChange}
                 className="bg-white border-2 border-black p-md font-body-md focus:ring-0 focus:border-primary-container focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] outline-none transition-all resize-none"
                 placeholder="What are we building? Mention goals, timelines, and the 'why' behind the project."
                 rows="6"
               ></textarea>
             </div>
             <button
-              className="bg-primary-container text-black font-headline-md uppercase py-lg border-2 border-black neo-shadow neo-shadow-hover flex items-center justify-center gap-sm group"
+              className={`bg-primary-container text-black font-headline-md uppercase py-lg border-2 border-black neo-shadow neo-shadow-hover flex items-center justify-center gap-sm group ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
               type="submit"
+              disabled={isSubmitting}
             >
-              SEND MESSAGE
+              {isSubmitting ? "Sending..." : "SEND MESSAGE"}
               <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
                 <LuSendHorizontal size={25} />
               </span>
