@@ -54,7 +54,7 @@ const tools = [
 
 const AboutSection = () => {
   return (
-    <section className="py-12 md:py-24 scroll-mt-24" id="about">
+    <section className="scroll-mt-24" id="about">
       {/* Bio Block */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 py-12 md:py-24 items-center mb-24 reveal">
         <div className="md:col-span-7">

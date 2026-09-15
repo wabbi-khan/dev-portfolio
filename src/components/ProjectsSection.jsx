@@ -244,7 +244,7 @@ const ProjectsSection = () => {
   }, [showAll]);
 
   return (
-    <section className="py-12 md:py-24 scroll-mt-24" id="work">
+    <section className="py-12 md:py-20 scroll-mt-24" id="work">
       <div className="mb-16 reveal">
         <h2 className="font-display text-4xl md:text-5xl font-bold text-black uppercase mb-4 leading-none">
           Selected{" "}
