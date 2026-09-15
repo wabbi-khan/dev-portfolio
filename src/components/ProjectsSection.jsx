@@ -1,6 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -178,6 +183,7 @@ const tagColors = {
 };
 
 const ProjectCard = ({ project }) => (
+  // Removed perspective-[1400px] from here
   <div className="project-card group relative bg-white border-2 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 reveal flex flex-col">
     {/* Color block header with animated SVG placeholder */}
     <div className="aspect-video border-b-2 border-black overflow-hidden bg-black relative flex items-center justify-center">
@@ -234,21 +240,90 @@ const ProjectCard = ({ project }) => (
 );
 
 const ProjectsSection = () => {
-  const [showAll, setShowAll] = useState(false);
-  const INITIAL_COUNT = 6;
-
-  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_COUNT);
-  const hasMore = projects.length > INITIAL_COUNT;
-
   useEffect(() => {
-    if (!showAll) return;
-    const timer = setTimeout(() => {
-      document.querySelectorAll("#work .reveal").forEach((el) => {
-        el.classList.add("active");
+    // 1. FIX: Set a consistent 3D perspective and origin directly on each card.
+    // This ensures every card tilts from its exact center, regardless of grid position.
+    gsap.set(".project-card", {
+      transformPerspective: 1200,
+      transformOrigin: "50% 50%",
+    });
+
+    // 2. Create scroll animation (Using Y and Scale to avoid fighting with mousemove rotation)
+    gsap.utils.toArray(".project-card").forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.95,
+          z: -100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          z: 0,
+          duration: 1,
+          ease: "power3.out",
+          delay: index * 0.05,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+            scrub: true,
+          },
+        },
+      );
+    });
+
+    // 3. Add subtle 3D tilt effect on mouse move for each card
+    const handleMouseMove = (e) => {
+      const card = e.currentTarget;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateY = ((x - centerX) / centerX) * 8;
+      const rotateX = ((centerY - y) / centerY) * 8;
+
+      gsap.to(card, {
+        rotationY: rotateY,
+        rotationX: rotateX,
+        duration: 0.4,
+        ease: "power2.out",
+        overwrite: "auto", // Ensures this hover tween overrides any previous ones cleanly
       });
-    }, 100);
-    return () => clearTimeout(timer);
-  }, [showAll]);
+    };
+
+    const handleMouseLeave = (e) => {
+      gsap.to(e.currentTarget, {
+        rotationY: 0,
+        rotationX: 0,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.5)",
+        overwrite: "auto",
+      });
+    };
+
+    document.querySelectorAll(".project-card").forEach((card) => {
+      card.addEventListener("mousemove", handleMouseMove);
+      card.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    // Cleanup
+    return () => {
+      gsap.killTweensOf(".project-card");
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      document.querySelectorAll(".project-card").forEach((card) => {
+        card.removeEventListener("mousemove", handleMouseMove);
+        card.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, []);
 
   return (
     <section className="py-12 md:py-20 scroll-mt-24" id="work">
@@ -265,22 +340,12 @@ const ProjectsSection = () => {
         </p>
       </div>
 
+      {/* FIX: Removed perspective-[1400px] from the parent grid to prevent double-perspective distortion */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {visibleProjects.map((p, i) => (
+        {projects.map((p, i) => (
           <ProjectCard key={i} project={p} />
         ))}
       </div>
-
-      {hasMore && !showAll && (
-        <div className="flex justify-center mt-12">
-          <button
-            onClick={() => setShowAll(true)}
-            className="border-2 border-black px-8 py-3 font-display font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-sm bg-white hover:bg-[#CCFF00]"
-          >
-            Show More
-          </button>
-        </div>
-      )}
     </section>
   );
 };
