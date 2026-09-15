@@ -4,6 +4,13 @@ import { MdArrowOutward } from "react-icons/md";
 
 const projects = [
   {
+    name: "Google map scraper",
+    desc: "Google map scraper chrome extension with high performance UI and smooth animations.",
+    tags: ["Chrome extension", "Fast api", "React", "tailwind"],
+    url: "https://github.com/wabbi-khan/google-map-scraper",
+    year: "2026",
+  },
+  {
     name: "Life drop",
     desc: "Blood Donor web application with modern UI and smooth animations.",
     tags: ["Next.js", "React", "tailwind"],
