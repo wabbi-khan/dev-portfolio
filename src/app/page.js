@@ -58,7 +58,7 @@ export default function Home() {
 
   return (
     <div className="bg-surface-bright font-body text-on-surface ">
-      <Toaster position="top-right" />
+      <Toaster position="bottom-center" />
       <Navbar />
 
       <main className="mt-24 max-w-[1400px] mx-auto px-6 overflow-x-hidden">
