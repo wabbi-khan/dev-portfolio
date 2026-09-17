@@ -10,7 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import HireMe from "@/components/HireMe";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
-import ThreeStoryCanvas from "@/components/ThreeStoryCanvas";
+// import ThreeStoryCanvas from "@/components/ThreeStoryCanvas";
 import StorytellingHUD from "@/components/StorytellingHUD";
 
 export default function Home() {
@@ -61,11 +61,14 @@ export default function Home() {
 
   return (
     <SmoothScrollProvider>
-      <div className="relative min-h-screen bg-surface-bright/85 font-body text-on-surface overflow-x-hidden">
-        {/* 3D WebGL Story Canvas in background */}
-        <ThreeStoryCanvas />
+      <div className="relative min-h-screen bg-surface-bright/85 paper-grid-texture font-body text-on-surface overflow-x-hidden">
+        {/* Subtle tactile paper grain overlay */}
+        <div className="paper-grain-overlay" aria-hidden="true" />
 
-        {/* Storytelling Side HUD with live telemetry */}
+        {/* 3D WebGL Story Canvas in background */}
+        {/* <ThreeStoryCanvas /> */}
+
+        {/* Storytelling Side HUD */}
         <StorytellingHUD />
 
         <Toaster position="bottom-center" />

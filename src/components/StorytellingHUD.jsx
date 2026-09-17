@@ -84,7 +84,8 @@ export default function StorytellingHUD() {
                       : "bg-white text-black opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-2"
                   }`}
                 >
-                  {ch.num} {ch.name}
+                  {/* {ch.num} */}
+                  {ch.name}
                 </span>
 
                 {/* Chapter Marker Node */}
