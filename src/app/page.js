@@ -9,6 +9,9 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import HireMe from "@/components/HireMe";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import ThreeStoryCanvas from "@/components/ThreeStoryCanvas";
+import StorytellingHUD from "@/components/StorytellingHUD";
 
 export default function Home() {
   useEffect(() => {
@@ -57,29 +60,39 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-surface-bright font-body text-on-surface ">
-      <Toaster position="bottom-center" />
-      <Navbar />
+    <SmoothScrollProvider>
+      <div className="relative min-h-screen bg-surface-bright/85 font-body text-on-surface overflow-x-hidden">
+        {/* 3D WebGL Story Canvas in background */}
+        <ThreeStoryCanvas />
 
-      <main className="mt-24 max-w-[1400px] mx-auto px-6 overflow-x-hidden">
-        <HeroSection />
+        {/* Storytelling Side HUD with live telemetry */}
+        <StorytellingHUD />
 
-        <StatsSection />
+        <Toaster position="bottom-center" />
+        <Navbar />
 
-        <ProjectsSection />
+        <main className="relative z-10 mt-24 max-w-[1400px] mx-auto px-6 overflow-x-hidden">
+          <HeroSection />
 
-        {/* About Section */}
-        <AboutSection />
+          <StatsSection />
 
-        {/* Hire me Section */}
-        <HireMe />
+          <ProjectsSection />
 
-        {/* Contact Section */}
-        <ContactSection />
-      </main>
+          {/* About Section */}
+          <AboutSection />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+          {/* Hire me Section */}
+          <HireMe />
+
+          {/* Contact Section */}
+          <ContactSection />
+        </main>
+
+        {/* Footer */}
+        <div className="relative z-10">
+          <Footer />
+        </div>
+      </div>
+    </SmoothScrollProvider>
   );
 }

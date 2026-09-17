@@ -240,93 +240,100 @@ const ProjectCard = ({ project }) => (
 );
 
 const ProjectsSection = () => {
+  const sectionRef = React.useRef(null);
+
   useEffect(() => {
-    // 1. FIX: Set a consistent 3D perspective and origin directly on each card.
-    // This ensures every card tilts from its exact center, regardless of grid position.
-    gsap.set(".project-card", {
-      transformPerspective: 1200,
-      transformOrigin: "50% 50%",
-    });
+    const ctx = gsap.context(() => {
+      // 1. Set consistent 3D perspective and origin directly on each card
+      gsap.set(".project-card", {
+        transformPerspective: 1200,
+        transformOrigin: "50% 50%",
+      });
 
-    // 2. Create scroll animation (Using Y and Scale to avoid fighting with mousemove rotation)
-    gsap.utils.toArray(".project-card").forEach((card, index) => {
-      gsap.fromTo(
-        card,
-        {
-          opacity: 0,
-          y: 60,
-          scale: 0.95,
-          z: -100,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          z: 0,
-          duration: 1,
-          ease: "power3.out",
-          delay: index * 0.05,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-            scrub: true,
+      // 2. Cinematic 3D scroll entrance with subtle X rotation & Z depth
+      const cards = gsap.utils.toArray(".project-card");
+      cards.forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 70,
+            rotationX: 14,
+            scale: 0.94,
+            z: -100,
           },
-        },
-      );
-    });
-
-    // 3. Add subtle 3D tilt effect on mouse move for each card
-    const handleMouseMove = (e) => {
-      const card = e.currentTarget;
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateY = ((x - centerX) / centerX) * 8;
-      const rotateX = ((centerY - y) / centerY) * 8;
-
-      gsap.to(card, {
-        rotationY: rotateY,
-        rotationX: rotateX,
-        duration: 0.4,
-        ease: "power2.out",
-        overwrite: "auto", // Ensures this hover tween overrides any previous ones cleanly
+          {
+            opacity: 1,
+            y: 0,
+            rotationX: 0,
+            scale: 1,
+            z: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              end: "bottom 25%",
+              toggleActions: "play none none reverse",
+              scrub: 1,
+            },
+          }
+        );
       });
-    };
 
-    const handleMouseLeave = (e) => {
-      gsap.to(e.currentTarget, {
-        rotationY: 0,
-        rotationX: 0,
-        duration: 0.6,
-        ease: "elastic.out(1, 0.5)",
-        overwrite: "auto",
+      // 3. 3D tilt effect on mouse move for each card
+      const handleMouseMove = (e) => {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 10;
+        const rotateX = ((centerY - y) / centerY) * 10;
+
+        gsap.to(card, {
+          rotationY: rotateY,
+          rotationX: rotateX,
+          z: 15,
+          duration: 0.4,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      };
+
+      const handleMouseLeave = (e) => {
+        gsap.to(e.currentTarget, {
+          rotationY: 0,
+          rotationX: 0,
+          z: 0,
+          duration: 0.6,
+          ease: "elastic.out(1, 0.5)",
+          overwrite: "auto",
+        });
+      };
+
+      const domCards = sectionRef.current?.querySelectorAll(".project-card") || [];
+      domCards.forEach((card) => {
+        card.addEventListener("mousemove", handleMouseMove);
+        card.addEventListener("mouseleave", handleMouseLeave);
       });
-    };
 
-    document.querySelectorAll(".project-card").forEach((card) => {
-      card.addEventListener("mousemove", handleMouseMove);
-      card.addEventListener("mouseleave", handleMouseLeave);
-    });
+      return () => {
+        domCards.forEach((card) => {
+          card.removeEventListener("mousemove", handleMouseMove);
+          card.removeEventListener("mouseleave", handleMouseLeave);
+        });
+      };
+    }, sectionRef);
 
-    // Cleanup
-    return () => {
-      gsap.killTweensOf(".project-card");
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      document.querySelectorAll(".project-card").forEach((card) => {
-        card.removeEventListener("mousemove", handleMouseMove);
-        card.removeEventListener("mouseleave", handleMouseLeave);
-      });
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="py-12 md:py-20 scroll-mt-24" id="work">
+    <section ref={sectionRef} className="py-12 md:py-20 scroll-mt-24" id="work">
       <div className="mb-16 reveal">
         <h2 className="font-display text-4xl md:text-5xl font-bold text-black uppercase mb-4 leading-none">
           Selected{" "}
