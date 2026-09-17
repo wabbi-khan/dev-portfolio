@@ -182,62 +182,109 @@ const tagColors = {
   Sass: "bg-white",
 };
 
-const ProjectCard = ({ project }) => (
-  // Removed perspective-[1400px] from here
-  <div className="project-card group relative bg-white border-2 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 reveal flex flex-col">
-    {/* Color block header with animated SVG placeholder */}
-    <div className="aspect-video border-b-2 border-black overflow-hidden bg-black relative flex items-center justify-center">
+const stickyNoteThemes = [
+  {
+    bg: "bg-[#FEF08A]", // Classic Post-it Yellow
+    tapeBg: "bg-white/70",
+    tilt: "-rotate-1",
+  },
+  {
+    bg: "bg-[#CCFF00]", // Signature Neon Lime
+    tapeBg: "bg-black/15",
+    tilt: "rotate-1.5",
+  },
+  {
+    bg: "bg-[#BAE6FD]", // Sky Blue Sticky
+    tapeBg: "bg-white/70",
+    tilt: "-rotate-1.5",
+  },
+  {
+    bg: "bg-[#FBCFE8]", // Pastel Pink Sticky
+    tapeBg: "bg-white/70",
+    tilt: "rotate-1",
+  },
+  {
+    bg: "bg-[#D9F99D]", // Mint Green Sticky
+    tapeBg: "bg-white/70",
+    tilt: "-rotate-0.5",
+  },
+  {
+    bg: "bg-[#FED7AA]", // Soft Apricot Sticky
+    tapeBg: "bg-white/70",
+    tilt: "rotate-2",
+  },
+];
+
+const ProjectCard = ({ project, index = 0 }) => {
+  const theme = stickyNoteThemes[index % stickyNoteThemes.length];
+
+  return (
+    <div className="pt-4">
       <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #CCFF00 1px, transparent 1px)",
-          backgroundSize: "18px 18px",
-        }}
-      />
-      <span className="font-display font-black text-[#CCFF00] text-2xl uppercase tracking-tighter z-10 px-4 text-center leading-tight drop-shadow">
-        {project.name}
-      </span>
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-[#CCFF00] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-    </div>
+        className={`project-card group relative ${theme.bg} border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[14px_14px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 reveal flex flex-col ${theme.tilt} hover:rotate-0`}
+      >
+        {/* Washi Tape Strip at top center */}
+        <div
+          className={`absolute -top-3.5 left-1/2 -translate-x-1/2 w-28 h-6 ${theme.tapeBg} border border-black/20 shadow-sm backdrop-blur-[2px] rotate-[-1.5deg] z-20 pointer-events-none`}
+        />
 
-    <div className="p-6 flex flex-col flex-1">
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2 mb-3">
-        {project.tags.map((tag, i) => (
-          <span
-            key={i}
-            className={`px-2 py-0.5 border border-black font-display font-bold text-[9px] uppercase ${tagColors[tag] || "bg-white"}`}
-          >
-            {tag}
+        {/* Sticky Note Top Adhesive Strip Header */}
+        <div className="px-5 pt-4 pb-2.5 border-b-2 border-dashed border-black/15 flex justify-between items-center bg-black/5">
+          <span className="font-mono text-[10px] font-black tracking-widest uppercase text-black/70 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-black inline-block"></span>
+            PROJECT #{index + 1 < 10 ? `0${index + 1}` : index + 1}
           </span>
-        ))}
-        <span className="ml-auto font-mono text-xs text-on-tertiary-container self-center">
-          {project.year}
-        </span>
-      </div>
+          <span className="font-mono text-xs font-black text-black px-2 py-0.5 border border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            &apos;{project.year.slice(-2)}
+          </span>
+        </div>
 
-      <p className="text-sm text-on-surface-variant font-medium leading-relaxed flex-1 mb-4">
-        {project.desc}
-      </p>
+        {/* Sticky Note Content Body */}
+        <div className="p-6 flex flex-col flex-1">
+          {/* Project Title with bold marker style */}
+          <h3 className="font-display font-black text-2xl uppercase tracking-tight text-black mb-2 leading-tight">
+            {project.name}
+          </h3>
 
-      <div className="flex items-center justify-between">
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-black text-white px-5 py-2.5 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all font-display font-bold uppercase text-sm hover:bg-[#CCFF00] hover:text-black"
-        >
-          View Live
-        </a>
-        <span className="text-black text-2xl">
-          <MdArrowOutward />
-        </span>
+          {/* Tags styled as sticky flags */}
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {project.tags.map((tag, i) => (
+              <span
+                key={i}
+                className="px-2 py-0.5 border border-black font-display font-bold text-[9px] uppercase bg-white/80 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <p className="text-sm text-black/85 font-medium leading-relaxed flex-1 mb-6">
+            {project.desc}
+          </p>
+
+          <div className="flex items-center justify-between pt-3 border-t border-black/10">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black text-white px-5 py-2.5 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all font-display font-bold uppercase text-xs hover:bg-white hover:text-black"
+            >
+              View Live
+            </a>
+            <span className="text-black text-2xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+              <MdArrowOutward />
+            </span>
+          </div>
+        </div>
+
+        {/* Dog-ear fold on bottom-right corner */}
+        <div className="absolute bottom-0 right-0 w-6 h-6 overflow-hidden pointer-events-none">
+          <div className="absolute -right-3 -bottom-3 w-6 h-6 bg-black/20 border-t border-l border-black/30 transform rotate-45 shadow-sm" />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ProjectsSection = () => {
   const sectionRef = React.useRef(null);
@@ -350,7 +397,7 @@ const ProjectsSection = () => {
       {/* FIX: Removed perspective-[1400px] from the parent grid to prevent double-perspective distortion */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {projects.map((p, i) => (
-          <ProjectCard key={i} project={p} />
+          <ProjectCard key={i} project={p} index={i} />
         ))}
       </div>
     </section>
