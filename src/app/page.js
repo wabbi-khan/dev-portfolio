@@ -74,21 +74,25 @@ export default function Home() {
         <Toaster position="bottom-center" />
         <Navbar />
 
-        <main className="relative z-10 mt-24 max-w-[1400px] mx-auto px-6 overflow-x-hidden">
-          <HeroSection />
+        <main className="relative z-10 mt-24 overflow-x-hidden">
+          <div className="max-w-[1400px] mx-auto px-6">
+            <HeroSection />
+          </div>
 
           <StatsSection />
 
-          <ProjectsSection />
+          <div className="max-w-[1400px] mx-auto px-6">
+            <ProjectsSection />
 
-          {/* About Section */}
-          <AboutSection />
+            {/* About Section */}
+            <AboutSection />
 
-          {/* Hire me Section */}
-          <HireMe />
+            {/* Hire me Section */}
+            <HireMe />
 
-          {/* Contact Section */}
-          <ContactSection />
+            {/* Contact Section */}
+            <ContactSection />
+          </div>
         </main>
 
         {/* Footer */}
