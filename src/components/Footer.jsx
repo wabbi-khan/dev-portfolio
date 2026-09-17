@@ -104,7 +104,7 @@ const Footer = () => {
           {/* Col 1: Identity & Live Status */}
           <div className="lg:col-span-4 flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <div className="border-2 border-black p-1 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <div className="p-1">
                 <Image src="/logo.png" alt="Logo" width={44} height={44} />
               </div>
               <div>
