@@ -155,7 +155,10 @@ const Navbar = () => {
             </div>
 
             {/* Hire Me CTA Button */}
-            <Link href="#hireme" onClick={(e) => handleLinkClick(e, "#hireme")}>
+            <Link
+              href="#contact"
+              onClick={(e) => handleLinkClick(e, "#contact")}
+            >
               <button className="bg-[#CCFF00] text-black px-5 py-2.5 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:bg-black hover:text-[#CCFF00] transition-all font-display font-black uppercase text-xs tracking-wider flex items-center gap-1.5 cursor-pointer">
                 <span>Hire Me</span>
                 <MdArrowOutward size={16} />
@@ -202,9 +205,9 @@ const Navbar = () => {
                 className="border-2 border-black p-3 bg-zinc-50 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 font-display font-black text-lg uppercase tracking-tight text-black hover:bg-[#CCFF00] transition-colors flex justify-between items-center"
               >
                 <span>{link.name}</span>
-                <span className="font-mono text-xs text-zinc-500">
+                {/* <span className="font-mono text-xs text-zinc-500">
                   {link.num}
-                </span>
+                </span> */}
               </Link>
             ))}
           </div>
@@ -212,8 +215,8 @@ const Navbar = () => {
           {/* Mobile Socials & CTA */}
           <div className="pt-2 flex flex-col gap-3">
             <Link
-              href="#hireme"
-              onClick={(e) => handleLinkClick(e, "#hireme")}
+              href="#contact"
+              onClick={(e) => handleLinkClick(e, "#contact")}
               className="w-full bg-[#CCFF00] text-black p-3 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center font-display font-black uppercase text-sm tracking-wider flex items-center justify-center gap-2"
             >
               <span>Hire Me</span>
