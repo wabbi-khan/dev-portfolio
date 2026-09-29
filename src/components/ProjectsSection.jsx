@@ -9,6 +9,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
+    name: "Estima8 AI Quoting Platform",
+    desc: "Built an AI-powered SaaS quoting platform using Next.js, React.js, REST APIs, AI integrations, and PrintSmith Vision workflows, automating commercial print estimate generation and reducing manual quoting time from hours to minutes.",
+    tags: ["Next.js", "React.js", "AI Integrations", "REST APIs"],
+    url: "https://estima8.ai/",
+    year: "2024",
+  },
+  {
+    name: "NALA Agentic AI Platform",
+    desc: "Developed an agentic AI SaaS platform with specialized AI agents for A&R, distribution, management, contract analysis, and artist outreach, combining full-stack development, REST API integrations, Generative AI, and automated LLM-driven workflows.",
+    tags: ["Next.js", "AI Agents", "Generative AI", "REST APIs"],
+    url: "https://www.nalabot.com/",
+    year: "2024",
+  },
+  {
+    name: "Music Mandi Digital Distribution",
+    desc: "Developed a full-stack digital music distribution platform for South Asian artists using React.js, Next.js, Tailwind CSS, analytics dashboards, and REST API integrations, supporting digital distribution, reporting, and royalty visibility.",
+    tags: ["Next.js", "React.js", "Tailwind CSS", "REST APIs"],
+    url: "https://musicmandi.com/",
+    year: "2024",
+  },
+  {
+    name: "Black Lion SaaS",
+    desc: "Full-stack AI-powered SaaS web application with dynamic dashboards, automated workflows, and production deployment.",
+    tags: ["Next.js", "TypeScript", "Node.js", "React"],
+    url: "https://www.blacklionapp.com/",
+    year: "2024",
+  },
+  {
     name: "Google map scraper",
     desc: "Google map scraper chrome extension with high performance UI and smooth animations.",
     tags: ["Chrome extension", "Fast api", "React", "tailwind"],
@@ -28,41 +56,6 @@ const projects = [
     tags: ["Next.js", "React", "tailwind"],
     url: "https://date-proposal-omega.vercel.app/",
     year: "2026",
-  },
-  {
-    name: "Nala Bot",
-    desc: "Company website with modern UI and smooth animations.",
-    tags: ["Next.js", "React", "tailwind"],
-    url: "https://www.nalabot.com/",
-    year: "2026",
-  },
-  {
-    name: "Music Mandi",
-    desc: "Company website with modern UI and smooth animations.",
-    tags: ["Next.js", "React", "Sass"],
-    url: "https://musicmandi.com/",
-    year: "2026",
-  },
-  {
-    name: "Estima8",
-    desc: "AI-based software company website with modern UI and smooth animations.",
-    tags: ["Next.js", "React", "Sass"],
-    url: "https://estima8.ai/",
-    year: "2026",
-  },
-  {
-    name: "Xcl Technologies",
-    desc: "Full-stack company website with modern UI and smooth animations.",
-    tags: ["Next.js", "React", "Sass"],
-    url: "https://xcltechnologies.com/",
-    year: "2023",
-  },
-  {
-    name: "Black Lion",
-    desc: "Enterprise-grade web application with dynamic dashboards and Firebase integration.",
-    tags: ["React", "Firebase", "Tailwind"],
-    url: "https://www.blacklionapp.com/",
-    year: "2024",
   },
   {
     name: "Super Mart",
@@ -389,8 +382,8 @@ const ProjectsSection = () => {
           </span>
         </h2>
         <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl font-medium">
-          A collection of high performance digital solutions from immersive
-          React applications to polished, responsive HTML sites.
+          A showcase of full-stack AI SaaS platforms, agentic workflows, and
+          high-performance web applications built with modern engineering standards.
         </p>
       </div>
 

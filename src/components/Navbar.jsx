@@ -72,7 +72,7 @@ const Navbar = () => {
         <div className="hidden sm:flex items-center gap-4 text-white/70">
           <span>PAKISTAN (UTC+5)</span>
           <span>•</span>
-          <span className="text-[#CCFF00]">FRONT-END ARCHITECT</span>
+          <span className="text-[#CCFF00]">FULL STACK &amp; AI ENGINEER</span>
         </div>
       </div>
 

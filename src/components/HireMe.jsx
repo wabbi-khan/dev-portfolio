@@ -74,9 +74,9 @@ const HireMe = () => {
           LET&apos;S BUILD SOMETHING ICONIC
         </h1>
         <p className="font-body-lg max-w-2xl text-on-surface-variant">
-          Ready to transform your vision into a high-performance React / Next.js
-          digital experience? I&apos;m looking for bold partners ready to build
-          something that stands out.
+          Ready to transform your vision into an AI-powered SaaS,
+          high-performance web platform, or full-stack digital product? I&apos;m
+          looking for bold partners ready to build something that stands out.
         </p>
       </div>
 
@@ -121,17 +121,21 @@ const HireMe = () => {
                 className="bg-white border-2 border-black p-md font-body-md focus:ring-0 focus:border-primary-container focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] outline-none transition-all appearance-none"
               >
                 <option value="">Select Project Type</option>
-                <option value="WEB DEVELOPMENT (REACT / NEXT.JS)">
-                  WEB DEVELOPMENT (REACT / NEXT.JS)
+                <option value="FULL-STACK AI & SAAS PRODUCT">
+                  FULL-STACK AI &amp; SAAS PRODUCT
                 </option>
-                <option value="RESPONSIVE HTML & CSS SITE">
-                  RESPONSIVE HTML & CSS SITE
+                <option value="NEXT.JS & REACT WEB APPLICATION">
+                  NEXT.JS &amp; REACT WEB APPLICATION
                 </option>
-                <option value="UI/UX IMPLEMENTATION">
-                  UI/UX IMPLEMENTATION
+                <option value="NODE.JS BACKEND & REST APIS">
+                  NODE.JS BACKEND &amp; REST APIS
                 </option>
-                <option value="FULL-STACK PRODUCT">FULL-STACK PRODUCT</option>
-                <option value="WORDPRESS SITE">WORDPRESS SITE</option>
+                <option value="AI AGENTS & LLM INTEGRATION">
+                  AI AGENTS &amp; LLM INTEGRATION
+                </option>
+                <option value="RESPONSIVE WEB PLATFORM">
+                  RESPONSIVE WEB PLATFORM
+                </option>
               </select>
             </div>
             <div className="flex flex-col gap-xs">
@@ -214,7 +218,7 @@ const HireMe = () => {
               <p className="font-display font-bold uppercase text-[#CCFF00] text-lg">
                 Pakistan
               </p>
-              <p className="font-mono text-white/70 text-sm">+92-331-3507810</p>
+              <p className="font-mono text-white/70 text-sm">+92 331 3507810</p>
               <p className="font-mono text-white/70 text-sm">
                 kwahab789@gmail.com
               </p>

@@ -21,50 +21,50 @@ const HeroSection = () => {
         </div>
 
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-black uppercase tracking-tighter">
-          FRONT-END{" "}
+          FULL STACK{" "}
           <span className="bg-[#CCFF00] px-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
-            DEVELOPER
+            ENGINEER
           </span>{" "}
-          &amp; WEB ARCHITECT
+          &amp; AI PRODUCTS
         </h1>
 
         {/* Client Catching Paragraph */}
         <p className="text-lg md:text-xl max-w-full text-on-surface-variant font-medium leading-relaxed">
-          Hi, I&apos;m <strong>Abdul Wahab Khan</strong> a Frontend Developer
-          with 4+ years of experience engineering high-performance web
-          platforms. I turn complex requirements into smooth digital products
-          from
+          Hi, I&apos;m <strong>Wahab Khan</strong>, a Full Stack Software
+          Engineer with 4 years of software development experience, including
+          1.5 years of hands-on Node.js backend development. I engineer
+          end-to-end
           <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">
-            Custom ERP and Software Systems
+            AI-Powered SaaS Products
           </span>
           and{" "}
           <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">
-            AI Chatbots
+            Agentic AI Workflows
           </span>
-          to real-time data{" "}
+          to scalable{" "}
           <span className="bg-black text-[#CCFF00] font-bold px-1.5 py-0.5 mx-1 inline-block mt-1">
-            Dashboards
+            RESTful APIs &amp; Dashboards
           </span>
-          and scalable web applications using React.js &amp; Next.js.
+          using React.js, Next.js, TypeScript, Node.js, and Generative AI.
         </p>
 
         {/* Quick Capabilities Highlights */}
         <div className="grid grid-cols-2 gap-3 text-sm font-mono font-bold uppercase">
           <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
-            <span className="text-[#CCFF00] bg-black px-1">✓</span> Custom ERP
-            Platforms
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> AI Products
+            &amp; Agents
           </div>
           <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
-            <span className="text-[#CCFF00] bg-black px-1">✓</span> AI Chatbot
-            Integrations
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> Full Stack
+            SaaS Platforms
           </div>
           <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
-            <span className="text-[#CCFF00] bg-black px-1">✓</span> Real-Time
-            Dashboards
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> Node.js
+            Backend &amp; APIs
           </div>
           <div className="flex items-center gap-2 border-l-4 border-black pl-3 py-1 bg-zinc-50">
-            <span className="text-[#CCFF00] bg-black px-1">✓</span> UI/UX
-            Animations
+            <span className="text-[#CCFF00] bg-black px-1">✓</span> Next.js
+            &amp; TypeScript
           </div>
         </div>
 
@@ -85,7 +85,7 @@ const HeroSection = () => {
         <div className="flex items-center gap-2 mt-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse inline-block"></span>
           <span className="font-mono text-xs text-zinc-500 uppercase tracking-widest">
-            Based in Pakistan
+            Based in , Pakistan
           </span>
         </div>
       </div>
@@ -97,11 +97,11 @@ const HeroSection = () => {
             <Typewriter
               options={{
                 strings: [
-                  "Custom ERP and Software Systems",
-                  "AI Chatbot Integrations",
-                  "Real-Time Dashboards",
-                  "UI/UX Animations",
-                  "Web Applications",
+                  "AI-Powered SaaS Products",
+                  "Agentic AI Workflows & Vapi",
+                  "Node.js Backend & REST APIs",
+                  "Next.js & React Applications",
+                  "OpenAI & Vector Search",
                 ],
                 autoStart: true,
                 loop: true,
@@ -282,7 +282,7 @@ const HeroSection = () => {
           </svg>
 
           <div className="absolute bottom-4 left-4 bg-black text-[#CCFF00] px-2 py-1 font-mono text-[10px] uppercase tracking-tighter">
-            React.Next.Js.V3+
+            React • Next.js • Node.js • AI
           </div>
         </div>
       </div>

@@ -109,10 +109,10 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="font-display font-black text-xl uppercase tracking-tight">
-                  Abdul Wahab Khan
+                  Wahab Khan
                 </h3>
                 <p className="font-mono text-xs text-zinc-500 font-bold uppercase">
-                  Front-End Developer &amp; Architect
+                  Full Stack Software Engineer | AI Products &amp; SaaS
                 </p>
               </div>
             </div>
@@ -129,7 +129,7 @@ const Footer = () => {
               <div className="flex items-center gap-2 mt-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse inline-block"></span>
                 <span className="font-mono text-xs text-zinc-500 uppercase tracking-widest">
-                  Based in Pakistan
+                  Based in , Pakistan
                 </span>
               </div>
             </div>
@@ -249,14 +249,14 @@ const Footer = () => {
             </span>
             <div className="flex flex-wrap gap-1.5 mt-2">
               {[
-                "React 19",
+                "React.js",
                 "Next.js",
-                "Tailwind",
-                "GSAP",
-                "Websocket",
-                "Redux",
+                "Node.js",
                 "TypeScript",
-                "REST API",
+                "AI Agents",
+                "OpenAI APIs",
+                "REST APIs",
+                "Tailwind",
               ].map((tech, i) => (
                 <span
                   key={i}
@@ -272,7 +272,7 @@ const Footer = () => {
         {/* Bottom Credits & Back to Top Bar */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-6">
           <div className="font-mono text-xs font-bold text-zinc-600 uppercase text-center sm:text-left">
-            © 2026 ABDUL WAHAB KHAN.
+            © 2026 WAHAB KHAN.
           </div>
 
           {/* Back to Top Button */}

@@ -11,11 +11,11 @@ const ContactSection = () => {
           </h2>
           <p className="text-lg md:text-xl text-white/80 font-medium mb-6">
             I&apos;m currently accepting new projects. Let&apos;s discuss your
-            vision and bring it to life with modern React / Next.js tech.
+            vision and bring it to life with modern Full Stack &amp; AI tech.
           </p>
           <div className="flex flex-col gap-2 font-mono text-sm text-white/60">
             <span>📍 Pakistan</span>
-            <span>📞 +92-331-3507810</span>
+            <span>📞 +92 331 3507810</span>
             <a
               href="mailto:kwahab789@gmail.com"
               className="text-[#CCFF00] hover:underline"

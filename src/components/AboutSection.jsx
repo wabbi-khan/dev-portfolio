@@ -10,46 +10,64 @@ import { FaHtml5 } from "react-icons/fa";
 
 const skills = [
   {
-    category: "Frameworks & Libraries",
+    category: "Languages & Frontend",
     icon: <MdOutlineTerminal size={32} />,
     color: "bg-[#CCFF00]",
     items: [
+      "JavaScript (ES6+)",
+      "TypeScript",
       "React.js",
       "Next.js",
       "Tailwind CSS",
       "Bootstrap",
       "Sass",
-      "shadcn",
-      "material ui",
+      "Modern CSS",
+      "Responsive Web Design",
     ],
   },
   {
-    category: "Core Web Tech",
+    category: "Backend & APIs",
     icon: <FaHtml5 size={32} />,
     color: "bg-white",
-    items: ["HTML5", "CSS3", "JavaScript (ES6+)"],
+    items: [
+      "Node.js",
+      "RESTful APIs",
+      "Server-Side Development",
+      "API Integration",
+      "Third-Party Integrations",
+    ],
   },
   {
-    category: "Design Tools",
+    category: "AI, LLM & Tools",
     icon: <MdOutlineDesignServices size={32} />,
     color: "bg-white",
-    items: ["Adobe Photoshop", "Adobe XD", "Figma"],
+    items: [
+      "OpenAI APIs",
+      "Generative AI",
+      "LLM Integrations",
+      "AI Agents",
+      "Agentic Workflows",
+      "Vapi",
+      "Vector Search",
+      "Redux",
+      "Vercel",
+    ],
   },
 ];
 
 const tools = [
   "React.js",
   "Next.js",
-  "Tailwind CSS",
-  "Sass",
-  "Bootstrap",
-  "HTML5",
-  "CSS3",
+  "Node.js",
+  "TypeScript",
   "JavaScript",
+  "OpenAI APIs",
+  "AI Agents",
+  "Tailwind CSS",
+  "Redux",
+  "REST APIs",
+  "Vercel",
   "Git / GitHub",
-  "Firebase",
-  "WordPress",
-  "Adobe XD",
 ];
 
 const AboutSection = () => {
@@ -67,23 +85,27 @@ const AboutSection = () => {
           </h2>
 
           <p className="text-lg md:text-xl max-w-full border-l-4 border-primary-container pl-6 py-2 text-on-surface-variant font-medium leading-relaxed mb-6">
-            I am a Front-End Developer with over 4+ years of hands-on experience
-            building fast, user-focused, and visually striking web platforms.
-            Specializing in modern JavaScript frameworks like React.js and
-            Next.js, I bridge the gap between high-impact design and clean,
-            scalable code.
+            I am a Full Stack Software Engineer with 4 years of software
+            development experience, including 1.5 years of hands-on Node.js
+            backend development. Experienced in full stack web application
+            development, frontend, backend, SaaS product development, RESTful
+            API development and integration, and production deployment using
+            React.js, Next.js, JavaScript, TypeScript, and Node.js.
           </p>
 
           <p className="text-base text-on-surface-variant font-medium border-l-4 border-black pl-6 py-2 leading-relaxed mb-6">
-            My expertise extends beyond standard interfaces to architecting
-            complex, data-driven ERP systems and building custom AI-powered
-            chatbot solutions that streamline operations.
+            I build AI-powered products with OpenAI APIs, Generative AI, LLM
+            integrations, AI agents, Vapi, and vector search, with end-to-end
+            ownership across responsive user interfaces, server-side logic,
+            third-party API integrations, debugging, maintenance, and product
+            delivery.
           </p>
 
           <p className="text-base text-on-surface-variant font-medium border-l-4 border-black pl-6 py-2 leading-relaxed">
-            I love bringing static layouts to life—currently deep-diving into
-            advanced web animation libraries to make digital experiences even
-            more interactive, responsive, and engaging.
+            I collaborate with product and business stakeholders throughout the
+            software development lifecycle to translate requirements into
+            production-ready features, troubleshoot production issues, maintain
+            legacy systems, and ship backward-compatible releases.
           </p>
         </div>
         <div className="md:col-span-5 relative">
@@ -262,7 +284,7 @@ const AboutSection = () => {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="font-display text-2xl font-bold uppercase">
-                    Web Developer
+                    Full Stack Software Engineer
                   </h3>
                   <p className="font-display font-bold text-primary-fixed-dim uppercase tracking-wider text-xs">
                     BLACK LION — Aug 2023 – Present
@@ -272,14 +294,38 @@ const AboutSection = () => {
                   <MdNorthEast />
                 </span>
               </div>
-              <ul className="text-base text-on-surface-variant font-medium space-y-1 list-disc list-inside">
-                <li>Developing and optimizing complex user interfaces.</li>
+              <ul className="text-base text-on-surface-variant font-medium space-y-2 list-disc list-inside">
                 <li>
-                  Writing highly efficient, clean, and reusable React/Next.js
-                  code.
+                  Develop, test, deploy, and maintain full-stack AI-powered SaaS
+                  web applications using React.js, Next.js, JavaScript,
+                  TypeScript, and Node.js, contributing across frontend
+                  development, backend development, RESTful APIs, server-side
+                  logic, and production workflows.
                 </li>
                 <li>
-                  Integrating modern animation libraries to elevate overall UX.
+                  Apply 1.5 years of Node.js backend development experience to
+                  build server-side functionality, REST API integrations,
+                  third-party service integrations, and data-driven application
+                  workflows for production SaaS products.
+                </li>
+                <li>
+                  Integrate Generative AI and AI engineering capabilities
+                  including OpenAI APIs, LLM integrations, AI agents, agentic
+                  workflows, Vapi, and vector search to automate business
+                  processes and deliver AI-powered product features.
+                </li>
+                <li>
+                  Build responsive web applications using React.js and Next.js,
+                  implement state management with Redux and Context API, connect
+                  frontend interfaces to backend services, and ensure
+                  accessibility and cross-browser compatibility.
+                </li>
+                <li>
+                  Collaborate with product and business stakeholders throughout
+                  the software development lifecycle to translate requirements
+                  into production-ready features, troubleshoot production
+                  issues, maintain legacy systems, and ship backward-compatible
+                  releases.
                 </li>
               </ul>
             </div>
@@ -298,20 +344,16 @@ const AboutSection = () => {
                     Web Developer
                   </h3>
                   <p className="font-display font-bold text-secondary uppercase tracking-wider text-xs">
-                    ONLINE CARE — June 2023 – Aug 2023
+                    ONLINE CARE — Jun 2023 – Aug 2023
                   </p>
                 </div>
-                {/* <span className="hidden md:block text-4xl">
-                  <MdOutlineTrendingUp />
-                </span> */}
               </div>
-              <ul className="text-base text-on-surface-variant font-medium space-y-1 list-disc list-inside">
+              <ul className="text-base text-on-surface-variant font-medium space-y-2 list-disc list-inside">
                 <li>
-                  Built responsive layouts and verified cross-browser
-                  performance.
-                </li>
-                <li>
-                  Troubleshot frontend bugs and optimized site loading speeds.
+                  Built and maintained responsive web applications using HTML5,
+                  CSS3, and JavaScript, delivering frontend features,
+                  API-connected user experiences, debugging, testing, and
+                  production issue resolution.
                 </li>
               </ul>
             </div>
@@ -330,25 +372,16 @@ const AboutSection = () => {
                     Web Developer
                   </h3>
                   <p className="font-display font-bold text-secondary uppercase tracking-wider text-xs">
-                    XCL TECHNOLOGIES — Sept 2021 – Aug 2023
+                    XCL TECHNOLOGIES — Sep 2021 – Aug 2023
                   </p>
                 </div>
-                {/* <span className="hidden md:block text-4xl">
-                  <MdOutlineSchool />
-                </span> */}
               </div>
-              <ul className="text-base text-on-surface-variant font-medium space-y-1 list-disc list-inside">
+              <ul className="text-base text-on-surface-variant font-medium space-y-2 list-disc list-inside">
                 <li>
-                  Designed, built, and maintained fully responsive client
-                  websites.
-                </li>
-                <li>
-                  Collaborated with designers to translate Adobe XD/Photoshop
-                  prototypes into pixel-perfect code.
-                </li>
-                <li>
-                  Ensured modern web best practices, SEO optimization, and
-                  accessibility.
+                  Designed, developed, tested, and maintained responsive
+                  websites for local and international clients, focusing on
+                  clean code, web application development, usability,
+                  performance, and cross-browser compatibility.
                 </li>
               </ul>
             </div>
@@ -356,48 +389,27 @@ const AboutSection = () => {
         </div>
 
         {/* Education */}
-        {/* <div className="mt-16">
+        <div className="mt-16">
           <div className="flex items-center gap-4 mb-8">
             <h2 className="font-display text-2xl md:text-3xl font-bold uppercase whitespace-nowrap">
               Education
             </h2>
             <div className="h-1 w-full bg-black"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="border-2 border-black p-6 bg-[#CCFF00] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] stagger-item">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+            <div className="border-2 border-black p-6 bg-[#CCFF00] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
               <div className="font-mono text-[10px] uppercase tracking-widest mb-2 text-zinc-600">
-                2017 – 2022
+                2018 – 2022
               </div>
               <h3 className="font-display font-bold text-lg uppercase leading-tight mb-1">
-                B.S. Information Technology
+                Bachelor of Information Technology
               </h3>
-              <p className="text-sm font-medium text-zinc-700">
-                HIAST / Mehran University, Jamshoro
+              <p className="text-sm font-medium text-zinc-800">
+                Mehran University of Engineering and Technology, Jamshoro
               </p>
-              <p className="font-mono text-xs mt-2 font-bold">GPA: 3.6 / 4.0</p>
-            </div>
-            <div className="border-2 border-black p-6 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] stagger-item">
-              <div className="font-mono text-[10px] uppercase tracking-widest mb-2 text-zinc-600">
-                2017
-              </div>
-              <h3 className="font-display font-bold text-lg uppercase leading-tight mb-1">
-                Higher Secondary Certificate
-              </h3>
-              <p className="text-sm font-medium text-zinc-700">
-                Pre-Engineering
-              </p>
-            </div>
-            <div className="border-2 border-black p-6 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] stagger-item">
-              <div className="font-mono text-[10px] uppercase tracking-widest mb-2 text-zinc-600">
-                2015
-              </div>
-              <h3 className="font-display font-bold text-lg uppercase leading-tight mb-1">
-                Secondary School Certificate
-              </h3>
-              <p className="text-sm font-medium text-zinc-700">Science Group</p>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
   );

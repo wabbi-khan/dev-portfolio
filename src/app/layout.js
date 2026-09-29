@@ -1,22 +1,26 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Abdul Wahab Khan | Front-End Developer",
+  title: "Wahab Khan | Full Stack Software Engineer | AI Products & SaaS",
   description:
-    "Abdul Wahab Khan — Front-End Developer with 3+ years of experience in React.js, Next.js, and modern web technologies. Based in Pakistan.",
+    "Wahab Khan — Full Stack Software Engineer with 4 years of experience, specializing in AI-powered SaaS, Next.js, React.js, Node.js, and Generative AI. Based in Karachi, Pakistan.",
   keywords: [
-    "Abdul Wahab Khan",
-    "Front-End Developer",
+    "Wahab Khan",
+    "Full Stack Software Engineer",
+    "AI Products",
+    "SaaS",
     "React Developer",
     "Next.js Developer",
-    "Web Developer Pakistan",
+    "Node.js Developer",
+    "Generative AI",
+    "Karachi",
     "Pakistan",
   ],
-  authors: [{ name: "Abdul Wahab Khan" }],
+  authors: [{ name: "Wahab Khan" }],
   openGraph: {
-    title: "Abdul Wahab Khan | Front-End Developer",
+    title: "Wahab Khan | Full Stack Software Engineer | AI Products & SaaS",
     description:
-      "Building fast, user-focused, and visually striking websites with React.js & Next.js.",
+      "Building full-stack AI-powered SaaS products, agentic workflows, and high-performance web applications with React.js, Next.js, and Node.js.",
     type: "website",
   },
 };
