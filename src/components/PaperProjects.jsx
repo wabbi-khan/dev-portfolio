@@ -25,7 +25,6 @@ export default function PaperProjects({ projects, onFallback }) {
     if (!stage) return;
     let disposed = false;
     let io = null;
-    let dropTimer = null;
     let removeLanded = null;
     let nearIO = null;
 
@@ -61,9 +60,9 @@ export default function PaperProjects({ projects, onFallback }) {
           },
         });
         ctrlRef.current = ctrl;
-        // Papers rain in when the hero's paper ball lands on this stage.
-        // Without the hero animation (reduced motion, fallback) or as a safety
-        // net (e.g. page reloaded mid-scroll), drop shortly after it's visible.
+        // Papers start raining as soon as ~20% of the stage is on screen, so
+        // they're already falling while the hero's ball travels in (instead of
+        // waiting for it to land). The landing event is kept as a backup.
         const onLanded = () => ctrl.requestDrop();
         if (window.__heroPaperLanded) ctrl.requestDrop();
         window.addEventListener("hero-paper-landed", onLanded);
@@ -71,15 +70,7 @@ export default function PaperProjects({ projects, onFallback }) {
         io = new IntersectionObserver(
           ([entry]) => {
             ctrl.setVisible(entry.isIntersecting);
-            clearTimeout(dropTimer);
-            if (entry.isIntersecting) {
-              dropTimer = setTimeout(
-                () => ctrl.requestDrop(),
-                // the landing event normally fires first (also after a reload,
-                // as the hero ball eases to its end) — this is a last resort
-                window.__heroPaperActive ? 6000 : 0,
-              );
-            }
+            if (entry.isIntersecting) ctrl.requestDrop();
           },
           { threshold: 0.2 },
         );
@@ -109,7 +100,6 @@ export default function PaperProjects({ projects, onFallback }) {
       disposed = true;
       offReady();
       nearIO?.disconnect();
-      clearTimeout(dropTimer);
       removeLanded?.();
       io?.disconnect();
       ctrlRef.current?.destroy();
