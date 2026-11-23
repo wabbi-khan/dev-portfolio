@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { MdArrowOutward, MdClose } from "react-icons/md";
+import { onSiteReady } from "@/lib/preload";
 
 /**
  * 3D crumpled-paper project showcase.
@@ -24,8 +25,11 @@ export default function PaperProjects({ projects, onFallback }) {
     if (!stage) return;
     let disposed = false;
     let io = null;
+    let dropTimer = null;
+    let removeLanded = null;
+    let nearIO = null;
 
-    (async () => {
+    const start = async () => {
       // Reduced-motion users and browsers without WebGL get the grid instead
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       let webgl = false;
@@ -57,8 +61,26 @@ export default function PaperProjects({ projects, onFallback }) {
           },
         });
         ctrlRef.current = ctrl;
+        // Papers rain in when the hero's paper ball lands on this stage.
+        // Without the hero animation (reduced motion, fallback) or as a safety
+        // net (e.g. page reloaded mid-scroll), drop shortly after it's visible.
+        const onLanded = () => ctrl.requestDrop();
+        if (window.__heroPaperLanded) ctrl.requestDrop();
+        window.addEventListener("hero-paper-landed", onLanded);
+        removeLanded = () => window.removeEventListener("hero-paper-landed", onLanded);
         io = new IntersectionObserver(
-          ([entry]) => ctrl.setVisible(entry.isIntersecting),
+          ([entry]) => {
+            ctrl.setVisible(entry.isIntersecting);
+            clearTimeout(dropTimer);
+            if (entry.isIntersecting) {
+              dropTimer = setTimeout(
+                () => ctrl.requestDrop(),
+                // the landing event normally fires first (also after a reload,
+                // as the hero ball eases to its end) — this is a last resort
+                window.__heroPaperActive ? 6000 : 0,
+              );
+            }
+          },
           { threshold: 0.2 },
         );
         io.observe(stage);
@@ -66,10 +88,29 @@ export default function PaperProjects({ projects, onFallback }) {
         console.error("[PaperProjects]", err);
         fallbackRef.current?.();
       }
-    })();
+    };
+
+    // Build the scene only after the preloader has revealed the site and the
+    // stage is within ~one screen — keeps the initial load light. The paper
+    // data is already cached by the hero, so it's ready almost instantly.
+    const offReady = onSiteReady(() => {
+      nearIO = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          nearIO.disconnect();
+          start();
+        },
+        { rootMargin: "100% 0px 100% 0px" },
+      );
+      nearIO.observe(stage);
+    });
 
     return () => {
       disposed = true;
+      offReady();
+      nearIO?.disconnect();
+      clearTimeout(dropTimer);
+      removeLanded?.();
       io?.disconnect();
       ctrlRef.current?.destroy();
       ctrlRef.current = null;
@@ -91,6 +132,7 @@ export default function PaperProjects({ projects, onFallback }) {
     <div className="relative">
       <div
         ref={stageRef}
+        id="paper-stage"
         className="relative left-1/2 -translate-x-1/2 w-screen h-[85vh] min-h-[520px] max-h-[960px] border-y-2 border-black overflow-hidden bg-[#CCFF00] select-none"
         aria-label="Interactive 3D project showcase: crumpled paper balls, each one a project"
         role="application"

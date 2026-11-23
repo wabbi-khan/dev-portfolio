@@ -9,9 +9,13 @@
 import * as THREE from "three";
 import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
 import { EXRLoader } from "three/addons/loaders/EXRLoader.js";
+import { track } from "@/lib/preload";
 
 const RAW_FRAME_COUNT = 50;
 let cache = null;
+
+// Let the browser paint between decode chunks (keeps the preloader animating)
+const yieldToMain = () => new Promise((r) => setTimeout(r, 0));
 
 /** Loads + decodes the VAT once per page; later calls reuse the result. */
 export function loadVATData(basePath) {
@@ -25,13 +29,25 @@ export function loadVATData(basePath) {
 }
 
 async function decode(basePath) {
+  const task = track("vat");
   const exrLoader = new EXRLoader();
   exrLoader.setDataType(THREE.FloatType);
 
+  // download = 85% of this task, decoding the frames = the rest
+  const bytes = { fbx: [0, 1249769], exr: [0, 1745336] };
+  const report = (key) => (e) => {
+    if (e.total) bytes[key][1] = e.total;
+    bytes[key][0] = e.loaded;
+    const done = bytes.fbx[0] + bytes.exr[0];
+    const total = bytes.fbx[1] + bytes.exr[1];
+    task.progress((done / total) * 0.7);
+  };
+
   const [fbxGroup, posTex] = await Promise.all([
-    new FBXLoader().loadAsync(basePath + "paper.fbx"),
-    exrLoader.loadAsync(basePath + "paper-pos.exr"),
+    new FBXLoader().loadAsync(basePath + "paper.fbx", report("fbx")),
+    exrLoader.loadAsync(basePath + "paper-pos.exr", report("exr")),
   ]);
+  task.progress(0.7);
 
   let fbxMesh = null;
   fbxGroup.traverse((child) => {
@@ -103,6 +119,10 @@ async function decode(basePath) {
   const raw = new Float32Array(stride * RAW_FRAME_COUNT);
   const totalRows = RAW_FRAME_COUNT * rowsPerFrame;
   for (let f = 0; f < RAW_FRAME_COUNT; f++) {
+    if (f % 5 === 4) {
+      task.progress(0.7 + (f / RAW_FRAME_COUNT) * 0.12);
+      await yieldToMain();
+    }
     for (let v = 0; v < vertexCount; v++) {
       const pid = pointIds[v];
       const col = pid % texW;
@@ -151,7 +171,13 @@ async function decode(basePath) {
     if (z < minZ) minZ = z;
     if (z > maxZ) maxZ = z;
   }
-  const flat = { width: maxX - minX, depth: maxZ - minZ };
+  let sumY = 0;
+  for (const v of valid) sumY += positions[v * 3 + 1];
+  const flat = {
+    width: maxX - minX,
+    depth: maxZ - minZ,
+    center: [(minX + maxX) / 2, sumY / valid.length, (minZ + maxZ) / 2],
+  };
 
   // Crumpled (last frame) centre + 90th-percentile radius → physics sphere
   const lastOff = (frameCount - 1) * stride;
@@ -182,6 +208,10 @@ async function decode(basePath) {
   const normals = new Float32Array(stride * frameCount);
   const pn = new Float32Array(pointCount * 3);
   for (let f = 0; f < frameCount; f++) {
+    if (f % 3 === 2) {
+      task.progress(0.82 + (f / frameCount) * 0.17);
+      await yieldToMain();
+    }
     const s = f * stride;
     pn.fill(0);
     for (let i = 0; i < indices.length; i += 3) {
@@ -228,6 +258,7 @@ async function decode(basePath) {
 
   fbxGroup.traverse((child) => child.geometry?.dispose?.());
   posTex.dispose();
+  task.done();
 
   return { vertexCount, frameCount, indices, uvs, positions, normals, crumple, flat };
 }

@@ -12,6 +12,7 @@ import HireMe from "@/components/HireMe";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 // import ThreeStoryCanvas from "@/components/ThreeStoryCanvas";
 import StorytellingHUD from "@/components/StorytellingHUD";
+import Preloader from "@/components/Preloader";
 
 export default function Home() {
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function Home() {
 
   return (
     <SmoothScrollProvider>
+      <Preloader />
       <div className="relative min-h-screen bg-surface-bright/85 paper-grid-texture font-body text-on-surface overflow-x-hidden">
         {/* Subtle tactile paper grain overlay */}
         <div className="paper-grain-overlay" aria-hidden="true" />

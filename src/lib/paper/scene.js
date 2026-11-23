@@ -153,6 +153,7 @@ export function createPaperScene({
   let disposed = false;
   let visible = false;
   let spawned = false;
+  let dropRequested = false;
   let running = false;
   let prevTime = 0;
   const timeouts = new Set();
@@ -679,7 +680,7 @@ export function createPaperScene({
       renderer.setAnimationLoop(null);
       running = false;
     }
-    if (should && animData && !spawned) spawnAll();
+    if (should && animData && dropRequested && !spawned) spawnAll();
   }
 
   function setVisible(v) {
@@ -736,5 +737,10 @@ export function createPaperScene({
     canvas.remove();
   }
 
-  return { setVisible, discardActive, destroy };
+  function requestDrop() {
+    dropRequested = true;
+    syncLoop();
+  }
+
+  return { setVisible, requestDrop, discardActive, destroy };
 }

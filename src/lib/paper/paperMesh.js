@@ -219,6 +219,33 @@ function makeMaterial(map) {
   });
 }
 
+/**
+ * A single paper face from a custom draw function `(ctx, W, H) => void`.
+ * Returns { material, redraw, dispose }.
+ */
+export function createFaceMaterial(draw) {
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d");
+  const texture = makeTexture(canvas);
+  const material = makeMaterial(texture);
+  const redraw = () => {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    draw(ctx, W, H);
+    texture.needsUpdate = true;
+  };
+  redraw();
+  return {
+    material,
+    redraw,
+    dispose() {
+      texture.dispose();
+      material.dispose();
+    },
+  };
+}
+
 /** Owns every paper face: one low-res material per project + one shared hi-res. */
 export class PaperFaces {
   constructor(projects) {
