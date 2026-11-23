@@ -388,3 +388,9 @@ html.lenis body {
 
 
 
+
+/* Journey timeline node — lights up when the scroll rail reaches it */
+.journey-node.is-reached {
+  background: #ccff00;
+  box-shadow: 3px 3px 0 0 #000;
+}

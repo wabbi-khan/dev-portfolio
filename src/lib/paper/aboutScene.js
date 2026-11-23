@@ -133,7 +133,7 @@ function drawAboutFace(ctx, W, H) {
   ctx.fillRect(PAD, fy - 64, W - PAD * 2, 96);
   ctx.fillStyle = LIME;
   ctx.font = `800 30px ${DISPLAY}`;
-  ctx.fillText("B.IT — MEHRAN UET '22", PAD + 28, fy - 4);
+  ctx.fillText("BS.IT — MEHRAN UET '22", PAD + 28, fy - 4);
   ctx.fillStyle = "#fff";
   ctx.textAlign = "right";
   ctx.font = `700 26px ${DISPLAY}`;
