@@ -1,168 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
+import { projects } from "@/data/projects";
+import PaperProjects from "@/components/PaperProjects";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    name: "Estima8 AI Quoting Platform",
-    desc: "Built an AI-powered SaaS quoting platform using Next.js, React.js, REST APIs, AI integrations, and PrintSmith Vision workflows, automating commercial print estimate generation and reducing manual quoting time from hours to minutes.",
-    tags: ["Next.js", "React.js", "AI Integrations", "REST APIs"],
-    url: "https://estima8.ai/",
-    year: "2024",
-  },
-  {
-    name: "NALA Agentic AI Platform",
-    desc: "Developed an agentic AI SaaS platform with specialized AI agents for A&R, distribution, management, contract analysis, and artist outreach, combining full-stack development, REST API integrations, Generative AI, and automated LLM-driven workflows.",
-    tags: ["Next.js", "AI Agents", "Generative AI", "REST APIs"],
-    url: "https://www.nalabot.com/",
-    year: "2024",
-  },
-  {
-    name: "Music Mandi Digital Distribution",
-    desc: "Developed a full-stack digital music distribution platform for South Asian artists using React.js, Next.js, Tailwind CSS, analytics dashboards, and REST API integrations, supporting digital distribution, reporting, and royalty visibility.",
-    tags: ["Next.js", "React.js", "Tailwind CSS", "REST APIs"],
-    url: "https://musicmandi.com/",
-    year: "2024",
-  },
-  {
-    name: "Black Lion SaaS",
-    desc: "Full-stack AI-powered SaaS web application with dynamic dashboards, automated workflows, and production deployment.",
-    tags: ["Next.js", "TypeScript", "Node.js", "React"],
-    url: "https://www.blacklionapp.com/",
-    year: "2024",
-  },
-  {
-    name: "Google map scraper",
-    desc: "Google map scraper chrome extension with high performance UI and smooth animations.",
-    tags: ["Chrome extension", "Fast api", "React", "tailwind"],
-    url: "https://github.com/wabbi-khan/google-map-scraper",
-    year: "2026",
-  },
-  {
-    name: "Life drop",
-    desc: "Blood Donor web application with modern UI and smooth animations.",
-    tags: ["Next.js", "React", "tailwind"],
-    url: "https://blood-donor-one.vercel.app/",
-    year: "2026",
-  },
-  {
-    name: "Dating Proposal fun",
-    desc: "Dating web application with modern UI and smooth animations.",
-    tags: ["Next.js", "React", "tailwind"],
-    url: "https://date-proposal-omega.vercel.app/",
-    year: "2026",
-  },
-  {
-    name: "Super Mart",
-    desc: "Full-featured e-commerce platform with product listings and cart functionality.",
-    tags: ["Next.js", "React", "Sass"],
-    url: "https://www.dawoodonline.pk/",
-    year: "2023",
-  },
-  {
-    name: "Q Fashion Trends",
-    desc: "Fashion e-commerce store with advanced filtering and responsive design.",
-    tags: ["React", "Tailwind CSS"],
-    url: "https://www.qfashiontrends.com/",
-    year: "2023",
-  },
-  {
-    name: "Food Delivery App",
-    desc: "Food delivery platform with real-time order tracking and clean UI.",
-    tags: ["Next.js", "React", "Firebase"],
-    url: "https://hyd-food.vercel.app/",
-    year: "2023",
-  },
-  {
-    name: "Stellar Sleep",
-    desc: "Health & wellness web app with animated onboarding flows.",
-    tags: ["React", "Tailwind CSS"],
-    url: "https://emergen-test.vercel.app/",
-    year: "2023",
-  },
-  {
-    name: "Cuisine Tonite",
-    desc: "Restaurant web app with menu showcase and online reservation system.",
-    tags: ["Next.js", "Sass"],
-    url: "https://cuisinetonite.com/",
-    year: "2023",
-  },
-  {
-    name: "JJR Network",
-    desc: "Component library and design system built with reusable React components.",
-    tags: ["React", "Tailwind CSS"],
-    url: "https://jjr-components.vercel.app/",
-    year: "2023",
-  },
-  {
-    name: "Watches Web",
-    desc: "Premium watch showcase site with elegant animations and product gallery.",
-    tags: ["Next.js", "Tailwind CSS"],
-    url: "https://time-clock-gules.vercel.app/",
-    year: "2022",
-  },
-  {
-    name: "Fab Care at Home",
-    desc: "UK-based care services website with a professional, accessible layout.",
-    tags: ["HTML5", "CSS3", "Bootstrap"],
-    url: "https://www.fabcareathome.co.uk/",
-    year: "2022",
-  },
-  {
-    name: "LUMHS Hospital",
-    desc: "Government hospital portal with informational pages and appointment flow.",
-    tags: ["HTML5", "CSS3", "Bootstrap"],
-    url: "https://luh.gos.pk/",
-    year: "2022",
-  },
-  {
-    name: "JF Constructions",
-    desc: "Construction company site with project portfolio and service pages.",
-    tags: ["HTML5", "CSS3", "Bootstrap"],
-    url: "https://jfconstructions.pk/",
-    year: "2022",
-  },
-  {
-    name: "Self Trips",
-    desc: "Responsive travel website with destination galleries and booking UI.",
-    tags: ["HTML5", "CSS3", "Bootstrap"],
-    url: "https://self-trips.com/",
-    year: "2022",
-  },
-  {
-    name: "Hussain Enterprises",
-    desc: "Business enterprise website with clean service catalog.",
-    tags: ["HTML5", "CSS3"],
-    url: "https://hussain-enterprises.netlify.app/",
-    year: "2022",
-  },
-  {
-    name: "Beauty SPA",
-    desc: "Elegant spa website with booking form, pricing cards, and gallery.",
-    tags: ["HTML5", "CSS3", "Bootstrap"],
-    url: "https://beautyspaa.netlify.app/",
-    year: "2022",
-  },
-  {
-    name: "ABM Construction",
-    desc: "Construction firm portfolio with animated project showcase.",
-    tags: ["HTML5", "CSS3"],
-    url: "https://abmconstruction.netlify.app/",
-    year: "2022",
-  },
-  {
-    name: "Tailwind Landing Page",
-    desc: "High-converting SaaS landing page built with Tailwind utility classes.",
-    tags: ["HTML5", "Tailwind CSS"],
-    url: "https://tailwind-wabbi-khan.vercel.app/",
-    year: "2023",
-  },
-];
 
 const tagColors = {
   React: "bg-secondary-fixed",
@@ -214,7 +59,7 @@ const ProjectCard = ({ project, index = 0 }) => {
   return (
     <div className="pt-4">
       <div
-        className={`project-card group relative ${theme.bg} border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[14px_14px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 reveal flex flex-col ${theme.tilt} hover:rotate-0`}
+        className={`project-card group relative ${theme.bg} border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[14px_14px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all duration-300 flex flex-col ${theme.tilt} hover:rotate-0`}
       >
         {/* Washi Tape Strip at top center */}
         <div
@@ -281,8 +126,12 @@ const ProjectCard = ({ project, index = 0 }) => {
 
 const ProjectsSection = () => {
   const sectionRef = React.useRef(null);
+  const [view, setView] = useState("paper");
+
+  const fallbackToGrid = useCallback(() => setView("grid"), []);
 
   useEffect(() => {
+    if (view !== "grid") return;
     const ctx = gsap.context(() => {
       // 1. Set consistent 3D perspective and origin directly on each card
       gsap.set(".project-card", {
@@ -369,8 +218,9 @@ const ProjectsSection = () => {
       };
     }, sectionRef);
 
+    ScrollTrigger.refresh();
     return () => ctx.revert();
-  }, []);
+  }, [view]);
 
   return (
     <section ref={sectionRef} className="py-12 md:py-20 scroll-mt-24" id="work">
@@ -381,18 +231,48 @@ const ProjectsSection = () => {
             Projects
           </span>
         </h2>
-        <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl font-medium">
-          A showcase of full-stack AI SaaS platforms, agentic workflows, and
-          high-performance web applications built with modern engineering standards.
-        </p>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl font-medium">
+            A showcase of full-stack AI SaaS platforms, agentic workflows, and
+            high-performance web applications built with modern engineering standards.
+          </p>
+          <div
+            role="tablist"
+            aria-label="Project view"
+            className="flex shrink-0 self-start md:self-auto bg-zinc-100 p-1 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
+          >
+            {[
+              { id: "paper", label: "3D Paper" },
+              { id: "grid", label: "Grid" },
+            ].map((v) => (
+              <button
+                key={v.id}
+                type="button"
+                role="tab"
+                aria-selected={view === v.id}
+                onClick={() => setView(v.id)}
+                className={`px-4 py-1.5 border-2 font-display font-bold uppercase text-xs tracking-wider transition-all cursor-pointer ${
+                  view === v.id
+                    ? "bg-black text-[#CCFF00] border-black"
+                    : "border-transparent text-black hover:border-black hover:bg-[#CCFF00]"
+                }`}
+              >
+                {v.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* FIX: Removed perspective-[1400px] from the parent grid to prevent double-perspective distortion */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {projects.map((p, i) => (
-          <ProjectCard key={i} project={p} index={i} />
-        ))}
-      </div>
+      {view === "paper" ? (
+        <PaperProjects projects={projects} onFallback={fallbackToGrid} />
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {projects.map((p, i) => (
+            <ProjectCard key={p.url} project={p} index={i} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
